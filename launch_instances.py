@@ -1,21 +1,28 @@
-#import needed modules
-import boto3
-import logging
-import time
-import uuid
+#first import some modules to check if the needed modules are installed
 import importlib
 import subprocess
 
-#checking for boto3 and installing if missing
 def import_and_install_module(module_name):
     try:
         importlib.import_module(module_name)
     except ImportError:
         print(f"The module {module_name} is missing. Installing it now...")
         subprocess.call(['pip', 'install', module_name])
- 
-required_module = "boto3"
-import_and_install_module(required_module)
+
+#modules array that are required
+required_modules = ["boto3", "awscli", "logging", "time", "uuid"]
+
+#check and install the required modules
+for module in required_modules:
+    import_and_install_module(module)
+
+#import needed modules after checking if they are present and install missing ones
+import boto3
+import logging
+import time
+import uuid
+import importlib
+import subprocess
 
 #configure logging
 logging.basicConfig(
@@ -26,6 +33,16 @@ logging.basicConfig(
     ]
 )
 logging.info("Script Started")
+
+#now lets check if the AWS credentials are set and if not, we'll set them
+def check_aws_credentials():
+    if not (os.environ.get('AWS_ACCESS_KEY_ID') and os.environ.get('AWS_SECRET_ACCESS_KEY')):
+        print("AWS credentials are not set.")
+        access_key = input("Enter AWS Access Key ID: ")
+        secret_key = input("Enter AWS Secret Access Key: ")
+        os.environ['AWS_ACCESS_KEY_ID'] = access_key
+        os.environ['AWS_SECRET_ACCESS_KEY'] = secret_key
+        print("AWS credentials have been set.")
 
 #get the role to be assumed, usually the role from the account with access to the resources to be backed up
 roleArn = input("Enter Your Backup Role ARN: ")
@@ -122,3 +139,16 @@ wget https://github.com/barellag/scripts/raw/main/sqstest.py
 newInstanceId = newInstance[0].id
 print('Temporary instance ID: '+newInstanceId)
 
+#logging information summary
+logging.info("Creating a new EC2 instance with the following configuration:")
+logging.info("Image ID: " + latestAmiId)
+logging.info("Instance Type: t3.medium")
+logging.info("Security Group ID: " + securityGroup)
+logging.info("Subnet ID: " + subnetId)
+logging.info("Instance Profile: " + instanceProfile)
+
+newInstanceId = newInstance[0].id
+print('Temporary instance ID: '+newInstanceId)
+
+# Show where the log is printed
+logging.info("Log file is located at: VeeamSupportSQSTest.log")
