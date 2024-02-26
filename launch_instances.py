@@ -21,8 +21,7 @@ import boto3
 import logging
 import time
 import uuid
-import importlib
-import subprocess
+import os
 
 #configure logging
 logging.basicConfig(
