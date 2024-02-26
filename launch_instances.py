@@ -1,0 +1,107 @@
+#import needed modules
+import boto3
+import logging
+import time
+import uuid
+
+#configure logging
+logging.basicConfig(
+    level=logging.DEBUG,
+    format='%(asctime)s %(levelname)s %(message)s',
+    handlers=[
+        logging.FileHandler("VeeamSupportSQSTest.log")
+    ]
+)
+logging.info("Script Started")
+
+#get the role to be assumed, usually the role from the account with access to the resources to be backed up
+roleArn = input("Enter Your Backup Role ARN: ")
+#type any name here, this is just to identify the session when we are assuming the role
+sessionName = f"VeeamSupportSQSTest-{uuid.uuid4()}"
+
+#start session with assumed role
+session = boto3.Session()
+sts = session.client("sts")
+response = sts.assume_role(
+    RoleArn=roleArn,
+    RoleSessionName=sessionName,
+    DurationSeconds=900
+)
+assumedRole = response['AssumedRoleUser'] #getting assumed role with session name
+assumedRoleWithSession = assumedRole['Arn']
+print("Assuming role "+roleArn)
+time.sleep(0.5)
+print("Assumed role: "+assumedRoleWithSession)
+time.sleep(0.5)
+
+#save creds to variables
+credentials = response['Credentials']
+access_key_id = credentials['AccessKeyId']
+secret_access_key = credentials['SecretAccessKey']
+session_token = credentials['SessionToken']
+
+print("Starting session...")
+time.sleep(0.5)
+
+#setting temp credentials
+assumed_session = boto3.Session(
+    aws_access_key_id=access_key_id,
+    aws_secret_access_key=secret_access_key,
+    aws_session_token=session_token
+)
+
+#getting newest AMI for the test instance
+ssmClient=boto3.client('ssm')
+amiName='/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-6.1-x86_64'
+amiResponse=ssmClient.get_parameter(Name=amiName, WithDecryption=False)
+latestAmiId=amiResponse['Parameter']['Value']
+
+#launching a new test instance
+tempVmName = input('Enter a name for the test VM: ')
+regionId = input("Enter region name (example: us-east-1): ")
+instanceProfile = input("Enter the instance profile NAME used by the worker: ")
+subnetId = str(input('Enter subnet ID: '))
+securityGroup = input('Enter Security Group ID: ')
+sshKey = input('Enter SSH key name: ')
+ec2Client = assumed_session.resource('ec2', region_name=regionId)
+newInstance = ec2Client.create_instances(
+    BlockDeviceMappings=[
+        {
+            'DeviceName': '/dev/xvda',
+            'Ebs': {
+                'DeleteOnTermination': True,
+                'VolumeSize': 8,
+                'VolumeType': 'gp3'
+            },
+        },
+    ],
+    ImageId=latestAmiId, #using latest AMI from SSM parameter store
+    InstanceType='t3.medium',
+    SecurityGroupIds=[securityGroup],
+    SubnetId = subnetId,
+    MaxCount=1,
+    MinCount=1,
+    TagSpecifications= [
+        {
+            'ResourceType': 'instance',
+            'Tags':[
+                {
+                    'Key': 'Name',
+                    'Value': tempVmName
+                },
+            ]
+        },
+    ],
+    UserData='''#!/bin/bash
+yum  update
+yum install python3-pip python3-setuptools -y
+pip install boto3
+cd /tmp
+wget https://github.com/barellag/scripts/raw/main/sqstest.py
+''',
+    IamInstanceProfile = {'Name': instanceProfile},
+#    KeyName = sshKey
+)
+
+newInstanceId = newInstance[0].id
+print('Temporary instance ID: '+newInstanceId)
