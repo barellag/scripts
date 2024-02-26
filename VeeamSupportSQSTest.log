@@ -1,0 +1,428 @@
+2024-02-26 14:10:08,027 INFO Script Started
+2024-02-26 14:10:24,344 DEBUG Changing event name from creating-client-class.iot-data to creating-client-class.iot-data-plane
+2024-02-26 14:10:24,360 DEBUG Changing event name from before-call.apigateway to before-call.api-gateway
+2024-02-26 14:10:24,362 DEBUG Changing event name from request-created.machinelearning.Predict to request-created.machine-learning.Predict
+2024-02-26 14:10:24,363 DEBUG Changing event name from before-parameter-build.autoscaling.CreateLaunchConfiguration to before-parameter-build.auto-scaling.CreateLaunchConfiguration
+2024-02-26 14:10:24,363 DEBUG Changing event name from before-parameter-build.route53 to before-parameter-build.route-53
+2024-02-26 14:10:24,363 DEBUG Changing event name from request-created.cloudsearchdomain.Search to request-created.cloudsearch-domain.Search
+2024-02-26 14:10:24,363 DEBUG Changing event name from docs.*.autoscaling.CreateLaunchConfiguration.complete-section to docs.*.auto-scaling.CreateLaunchConfiguration.complete-section
+2024-02-26 14:10:24,364 DEBUG Changing event name from before-parameter-build.logs.CreateExportTask to before-parameter-build.cloudwatch-logs.CreateExportTask
+2024-02-26 14:10:24,364 DEBUG Changing event name from docs.*.logs.CreateExportTask.complete-section to docs.*.cloudwatch-logs.CreateExportTask.complete-section
+2024-02-26 14:10:24,365 DEBUG Changing event name from before-parameter-build.cloudsearchdomain.Search to before-parameter-build.cloudsearch-domain.Search
+2024-02-26 14:10:24,365 DEBUG Changing event name from docs.*.cloudsearchdomain.Search.complete-section to docs.*.cloudsearch-domain.Search.complete-section
+2024-02-26 14:10:24,373 DEBUG IMDS ENDPOINT: http://169.254.169.254/
+2024-02-26 14:10:24,471 DEBUG Looking for credentials via: env
+2024-02-26 14:10:24,471 DEBUG Looking for credentials via: assume-role
+2024-02-26 14:10:24,471 DEBUG Looking for credentials via: assume-role-with-web-identity
+2024-02-26 14:10:24,471 DEBUG Looking for credentials via: sso
+2024-02-26 14:10:24,471 DEBUG Looking for credentials via: shared-credentials-file
+2024-02-26 14:10:24,471 INFO Found credentials in shared credentials file: ~/.aws/credentials
+2024-02-26 14:10:24,487 DEBUG Loading JSON file: /opt/homebrew/lib/python3.11/site-packages/botocore/data/endpoints.json
+2024-02-26 14:10:24,517 DEBUG Loading JSON file: /opt/homebrew/lib/python3.11/site-packages/botocore/data/sdk-default-configuration.json
+2024-02-26 14:10:24,517 DEBUG Event choose-service-name: calling handler <function handle_service_name_alias at 0x1050f0180>
+2024-02-26 14:10:24,685 DEBUG Loading JSON file: /opt/homebrew/lib/python3.11/site-packages/botocore/data/sts/2011-06-15/service-2.json.gz
+2024-02-26 14:10:24,733 DEBUG Loading JSON file: /opt/homebrew/lib/python3.11/site-packages/botocore/data/sts/2011-06-15/endpoint-rule-set-1.json.gz
+2024-02-26 14:10:24,733 DEBUG Loading JSON file: /opt/homebrew/lib/python3.11/site-packages/botocore/data/partitions.json
+2024-02-26 14:10:24,733 DEBUG Event creating-client-class.sts: calling handler <function add_generate_presigned_url at 0x105026700>
+2024-02-26 14:10:24,734 DEBUG Looking for endpoint for sts via: environment_service
+2024-02-26 14:10:24,734 DEBUG Looking for endpoint for sts via: environment_global
+2024-02-26 14:10:24,734 DEBUG Looking for endpoint for sts via: config_service
+2024-02-26 14:10:24,734 DEBUG Looking for endpoint for sts via: config_global
+2024-02-26 14:10:24,734 DEBUG No configured endpoint found.
+2024-02-26 14:10:24,858 DEBUG Setting sts timeout as (60, 60)
+2024-02-26 14:10:24,861 DEBUG Loading JSON file: /opt/homebrew/lib/python3.11/site-packages/botocore/data/_retry.json
+2024-02-26 14:10:24,861 DEBUG Registering retry handlers for service: sts
+2024-02-26 14:10:24,861 DEBUG Event before-parameter-build.sts.AssumeRole: calling handler <function generate_idempotent_uuid at 0x105102ca0>
+2024-02-26 14:10:24,861 DEBUG Calling endpoint provider with parameters: {'Region': 'us-east-1', 'UseDualStack': False, 'UseFIPS': False, 'UseGlobalEndpoint': True}
+2024-02-26 14:10:24,862 DEBUG Endpoint provider result: https://sts.amazonaws.com
+2024-02-26 14:10:24,862 DEBUG Selecting from endpoint provider's list of auth schemes: "sigv4". User selected auth scheme is: "None"
+2024-02-26 14:10:24,862 DEBUG Selected auth type "v4" as "v4" with signing context params: {'region': 'us-east-1', 'signing_name': 'sts'}
+2024-02-26 14:10:24,862 DEBUG Event before-call.sts.AssumeRole: calling handler <function add_recursion_detection_header at 0x1051014e0>
+2024-02-26 14:10:24,862 DEBUG Event before-call.sts.AssumeRole: calling handler <function inject_api_version_header_if_needed at 0x1051347c0>
+2024-02-26 14:10:24,862 DEBUG Making request for OperationModel(name=AssumeRole) with params: {'url_path': '/', 'query_string': '', 'method': 'POST', 'headers': {'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8', 'User-Agent': 'Boto3/1.34.49 md/Botocore#1.34.49 ua/2.0 os/macos#23.3.0 md/arch#arm64 lang/python#3.11.6 md/pyimpl#CPython cfg/retry-mode#legacy Botocore/1.34.49'}, 'body': {'Action': 'AssumeRole', 'Version': '2011-06-15', 'RoleArn': 'arn:aws:iam::202854644357:role/veeam/path/barella-cross-path', 'RoleSessionName': 'VeeamSupportSQSTest-97dd428d-653b-4adf-a150-3aceb6594875', 'DurationSeconds': 900}, 'url': 'https://sts.amazonaws.com/', 'context': {'client_region': 'us-east-1', 'client_config': <botocore.config.Config object at 0x107ce8ed0>, 'has_streaming_input': False, 'auth_type': 'v4', 'signing': {'region': 'us-east-1', 'signing_name': 'sts'}, 'endpoint_properties': {'authSchemes': [{'name': 'sigv4', 'signingName': 'sts', 'signingRegion': 'us-east-1'}]}}}
+2024-02-26 14:10:24,862 DEBUG Event request-created.sts.AssumeRole: calling handler <bound method RequestSigner.handler of <botocore.signers.RequestSigner object at 0x107ce8e90>>
+2024-02-26 14:10:24,862 DEBUG Event choose-signer.sts.AssumeRole: calling handler <function set_operation_specific_signer at 0x105102b60>
+2024-02-26 14:10:24,862 DEBUG Calculating signature using v4 auth.
+2024-02-26 14:10:24,862 DEBUG CanonicalRequest:
+POST
+/
+
+content-type:application/x-www-form-urlencoded; charset=utf-8
+host:sts.amazonaws.com
+x-amz-date:20240226T171024Z
+
+content-type;host;x-amz-date
+fb6fa0c79594e9cf718dcd215d07cb7d41a367119dca06c63e585f3c0db21b8d
+2024-02-26 14:10:24,862 DEBUG StringToSign:
+AWS4-HMAC-SHA256
+20240226T171024Z
+20240226/us-east-1/sts/aws4_request
+e6fa660b896641ac8ffed79f2673bfa6362dbab1fdffe6c08f1d2ec13cec9246
+2024-02-26 14:10:24,862 DEBUG Signature:
+9ff6e9ca67c1c1888851bb761bbd5556bf261edeb65ba57c14f601522767d6d7
+2024-02-26 14:10:24,862 DEBUG Event request-created.sts.AssumeRole: calling handler <function add_retry_headers at 0x105134f40>
+2024-02-26 14:10:24,862 DEBUG Sending http request: <AWSPreparedRequest stream_output=False, method=POST, url=https://sts.amazonaws.com/, headers={'Content-Type': b'application/x-www-form-urlencoded; charset=utf-8', 'User-Agent': b'Boto3/1.34.49 md/Botocore#1.34.49 ua/2.0 os/macos#23.3.0 md/arch#arm64 lang/python#3.11.6 md/pyimpl#CPython cfg/retry-mode#legacy Botocore/1.34.49', 'X-Amz-Date': b'20240226T171024Z', 'Authorization': b'AWS4-HMAC-SHA256 Credential=AKIA445N4ETR6GIUCLM4/20240226/us-east-1/sts/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature=9ff6e9ca67c1c1888851bb761bbd5556bf261edeb65ba57c14f601522767d6d7', 'amz-sdk-invocation-id': b'c679582c-bd62-4e79-ab91-236c4dc705c2', 'amz-sdk-request': b'attempt=1', 'Content-Length': '214'}>
+2024-02-26 14:10:24,863 DEBUG Certificate path: /opt/homebrew/lib/python3.11/site-packages/botocore/cacert.pem
+2024-02-26 14:10:24,863 DEBUG Starting new HTTPS connection (1): sts.amazonaws.com:443
+2024-02-26 14:10:25,454 DEBUG https://sts.amazonaws.com:443 "POST / HTTP/1.1" 200 1613
+2024-02-26 14:10:25,454 DEBUG Response headers: {'x-amzn-RequestId': '7979bfcf-2404-4124-a088-b0b4249e0c10', 'Content-Type': 'text/xml', 'Content-Length': '1613', 'Date': 'Mon, 26 Feb 2024 17:10:25 GMT'}
+2024-02-26 14:10:25,455 DEBUG Response body:
+b'<AssumeRoleResponse xmlns="https://sts.amazonaws.com/doc/2011-06-15/">\n  <AssumeRoleResult>\n    <AssumedRoleUser>\n      <AssumedRoleId>AROAS6OYUHKCTZSHMWOWI:VeeamSupportSQSTest-97dd428d-653b-4adf-a150-3aceb6594875</AssumedRoleId>\n      <Arn>arn:aws:sts::202854644357:assumed-role/barella-cross-path/VeeamSupportSQSTest-97dd428d-653b-4adf-a150-3aceb6594875</Arn>\n    </AssumedRoleUser>\n    <Credentials>\n      <AccessKeyId>ASIAS6OYUHKC5JOOAMUH</AccessKeyId>\n      <SecretAccessKey>2dFv3NhUJszFfOQf5b5LYcQV/jUKYHB8SojYxR2T</SecretAccessKey>\n      <SessionToken>IQoJb3JpZ2luX2VjENr//////////wEaCXVzLWVhc3QtMSJHMEUCIHrl0h4pBB1T6z2zZJYqFJAtSpOlqB4zZSrlJBMd91WjAiEA3J+/Gqn8q1sasYj6owh9pN3Fa1+Lsd1fKlAkzbB/lp0qzgIIwv//////////ARABGgwyMDI4NTQ2NDQzNTciDFlSBTPn3IllpIEkbyqiAkU3U5ymu+ORhQf7JOSDP5rATdl9LnbwZjOarGfnQc7/ZSjbnhiG1x3yf+UA5KLc4Sdqwdca+A3MIgjgCKTkL7GR0BJHogr1ydHQFvhHI8dQ0eXBj82OwCMYHtjCm08+N8TJF+c6KGtLdRRNtpG3ykvIMK4AtULoDATSeodEfBYIzxXhP9hKjPRTxkotMX6P/3vj/QBP4ophqeFpKLrDPYW8d5KhNqLYpmK6ID1g4cNBNNhIe00lZCOLcZRetwuv9ludZ70n55z3JCLj1ldfyrSSahS8ca49rp/laBR5f9+drPWB53LII2DhrFsOjCwKArSUVuYH3bJBMvvWl2PnbGQ4/9rGDqLqIRKKtl2JB5BIWi/onGBKzf/4yKcuXX5WtUduMIGM864GOp0BXDHHgalDDPRstSbSvlIyKSVSli2X1HzEqqL3TeConvTAtxe6xKecD2PO5R6Z0U7BDHKGTFN5OslWdbpGLdsmWW30qCraA76RDHCe7+FoBbE+ZNSoz+NupHecz/TmcmWXyaTb3ZyNnlXuad/jkQO/PrugeFQjXXci4ElC0AznMgkJaouXS1Xd5yViYNu4V+hFa9urzwoegXpi8UOryw==</SessionToken>\n      <Expiration>2024-02-26T17:25:25Z</Expiration>\n    </Credentials>\n  </AssumeRoleResult>\n  <ResponseMetadata>\n    <RequestId>7979bfcf-2404-4124-a088-b0b4249e0c10</RequestId>\n  </ResponseMetadata>\n</AssumeRoleResponse>\n'
+2024-02-26 14:10:25,456 DEBUG Event needs-retry.sts.AssumeRole: calling handler <botocore.retryhandler.RetryHandler object at 0x107cfa450>
+2024-02-26 14:10:25,456 DEBUG No retry needed.
+2024-02-26 14:10:26,463 DEBUG Changing event name from creating-client-class.iot-data to creating-client-class.iot-data-plane
+2024-02-26 14:10:26,464 DEBUG Changing event name from before-call.apigateway to before-call.api-gateway
+2024-02-26 14:10:26,464 DEBUG Changing event name from request-created.machinelearning.Predict to request-created.machine-learning.Predict
+2024-02-26 14:10:26,465 DEBUG Changing event name from before-parameter-build.autoscaling.CreateLaunchConfiguration to before-parameter-build.auto-scaling.CreateLaunchConfiguration
+2024-02-26 14:10:26,465 DEBUG Changing event name from before-parameter-build.route53 to before-parameter-build.route-53
+2024-02-26 14:10:26,465 DEBUG Changing event name from request-created.cloudsearchdomain.Search to request-created.cloudsearch-domain.Search
+2024-02-26 14:10:26,465 DEBUG Changing event name from docs.*.autoscaling.CreateLaunchConfiguration.complete-section to docs.*.auto-scaling.CreateLaunchConfiguration.complete-section
+2024-02-26 14:10:26,466 DEBUG Changing event name from before-parameter-build.logs.CreateExportTask to before-parameter-build.cloudwatch-logs.CreateExportTask
+2024-02-26 14:10:26,466 DEBUG Changing event name from docs.*.logs.CreateExportTask.complete-section to docs.*.cloudwatch-logs.CreateExportTask.complete-section
+2024-02-26 14:10:26,466 DEBUG Changing event name from before-parameter-build.cloudsearchdomain.Search to before-parameter-build.cloudsearch-domain.Search
+2024-02-26 14:10:26,466 DEBUG Changing event name from docs.*.cloudsearchdomain.Search.complete-section to docs.*.cloudsearch-domain.Search.complete-section
+2024-02-26 14:10:26,468 DEBUG Changing event name from creating-client-class.iot-data to creating-client-class.iot-data-plane
+2024-02-26 14:10:26,469 DEBUG Changing event name from before-call.apigateway to before-call.api-gateway
+2024-02-26 14:10:26,469 DEBUG Changing event name from request-created.machinelearning.Predict to request-created.machine-learning.Predict
+2024-02-26 14:10:26,470 DEBUG Changing event name from before-parameter-build.autoscaling.CreateLaunchConfiguration to before-parameter-build.auto-scaling.CreateLaunchConfiguration
+2024-02-26 14:10:26,470 DEBUG Changing event name from before-parameter-build.route53 to before-parameter-build.route-53
+2024-02-26 14:10:26,470 DEBUG Changing event name from request-created.cloudsearchdomain.Search to request-created.cloudsearch-domain.Search
+2024-02-26 14:10:26,470 DEBUG Changing event name from docs.*.autoscaling.CreateLaunchConfiguration.complete-section to docs.*.auto-scaling.CreateLaunchConfiguration.complete-section
+2024-02-26 14:10:26,471 DEBUG Changing event name from before-parameter-build.logs.CreateExportTask to before-parameter-build.cloudwatch-logs.CreateExportTask
+2024-02-26 14:10:26,471 DEBUG Changing event name from docs.*.logs.CreateExportTask.complete-section to docs.*.cloudwatch-logs.CreateExportTask.complete-section
+2024-02-26 14:10:26,471 DEBUG Changing event name from before-parameter-build.cloudsearchdomain.Search to before-parameter-build.cloudsearch-domain.Search
+2024-02-26 14:10:26,471 DEBUG Changing event name from docs.*.cloudsearchdomain.Search.complete-section to docs.*.cloudsearch-domain.Search.complete-section
+2024-02-26 14:10:26,472 DEBUG IMDS ENDPOINT: http://169.254.169.254/
+2024-02-26 14:10:26,473 DEBUG Looking for credentials via: env
+2024-02-26 14:10:26,473 DEBUG Looking for credentials via: assume-role
+2024-02-26 14:10:26,473 DEBUG Looking for credentials via: assume-role-with-web-identity
+2024-02-26 14:10:26,473 DEBUG Looking for credentials via: sso
+2024-02-26 14:10:26,474 DEBUG Looking for credentials via: shared-credentials-file
+2024-02-26 14:10:26,474 INFO Found credentials in shared credentials file: ~/.aws/credentials
+2024-02-26 14:10:26,474 DEBUG Loading JSON file: /opt/homebrew/lib/python3.11/site-packages/botocore/data/endpoints.json
+2024-02-26 14:10:26,481 DEBUG Loading JSON file: /opt/homebrew/lib/python3.11/site-packages/botocore/data/sdk-default-configuration.json
+2024-02-26 14:10:26,481 DEBUG Event choose-service-name: calling handler <function handle_service_name_alias at 0x1050f0180>
+2024-02-26 14:10:26,543 DEBUG Loading JSON file: /opt/homebrew/lib/python3.11/site-packages/botocore/data/ssm/2014-11-06/service-2.json.gz
+2024-02-26 14:10:26,601 DEBUG Loading JSON file: /opt/homebrew/lib/python3.11/site-packages/botocore/data/ssm/2014-11-06/endpoint-rule-set-1.json.gz
+2024-02-26 14:10:26,601 DEBUG Loading JSON file: /opt/homebrew/lib/python3.11/site-packages/botocore/data/partitions.json
+2024-02-26 14:10:26,602 DEBUG Event creating-client-class.ssm: calling handler <function add_generate_presigned_url at 0x105026700>
+2024-02-26 14:10:26,603 DEBUG Looking for endpoint for ssm via: environment_service
+2024-02-26 14:10:26,603 DEBUG Looking for endpoint for ssm via: environment_global
+2024-02-26 14:10:26,603 DEBUG Looking for endpoint for ssm via: config_service
+2024-02-26 14:10:26,603 DEBUG Looking for endpoint for ssm via: config_global
+2024-02-26 14:10:26,603 DEBUG No configured endpoint found.
+2024-02-26 14:10:26,722 DEBUG Setting ssm timeout as (60, 60)
+2024-02-26 14:10:26,723 DEBUG Loading JSON file: /opt/homebrew/lib/python3.11/site-packages/botocore/data/_retry.json
+2024-02-26 14:10:26,723 DEBUG Registering retry handlers for service: ssm
+2024-02-26 14:10:26,723 DEBUG Event before-parameter-build.ssm.GetParameter: calling handler <function generate_idempotent_uuid at 0x105102ca0>
+2024-02-26 14:10:26,723 DEBUG Calling endpoint provider with parameters: {'Region': 'us-east-1', 'UseDualStack': False, 'UseFIPS': False}
+2024-02-26 14:10:26,723 DEBUG Endpoint provider result: https://ssm.us-east-1.amazonaws.com
+2024-02-26 14:10:26,724 DEBUG Event before-call.ssm.GetParameter: calling handler <function add_recursion_detection_header at 0x1051014e0>
+2024-02-26 14:10:26,724 DEBUG Event before-call.ssm.GetParameter: calling handler <function inject_api_version_header_if_needed at 0x1051347c0>
+2024-02-26 14:10:26,724 DEBUG Making request for OperationModel(name=GetParameter) with params: {'url_path': '/', 'query_string': '', 'method': 'POST', 'headers': {'X-Amz-Target': 'AmazonSSM.GetParameter', 'Content-Type': 'application/x-amz-json-1.1', 'User-Agent': 'Boto3/1.34.49 md/Botocore#1.34.49 ua/2.0 os/macos#23.3.0 md/arch#arm64 lang/python#3.11.6 md/pyimpl#CPython cfg/retry-mode#legacy Botocore/1.34.49'}, 'body': b'{"Name": "/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-6.1-x86_64", "WithDecryption": false}', 'url': 'https://ssm.us-east-1.amazonaws.com/', 'context': {'client_region': 'us-east-1', 'client_config': <botocore.config.Config object at 0x115627d90>, 'has_streaming_input': False, 'auth_type': None}}
+2024-02-26 14:10:26,724 DEBUG Event request-created.ssm.GetParameter: calling handler <bound method RequestSigner.handler of <botocore.signers.RequestSigner object at 0x115627d50>>
+2024-02-26 14:10:26,724 DEBUG Event choose-signer.ssm.GetParameter: calling handler <function set_operation_specific_signer at 0x105102b60>
+2024-02-26 14:10:26,724 DEBUG Calculating signature using v4 auth.
+2024-02-26 14:10:26,724 DEBUG CanonicalRequest:
+POST
+/
+
+content-type:application/x-amz-json-1.1
+host:ssm.us-east-1.amazonaws.com
+x-amz-date:20240226T171026Z
+x-amz-target:AmazonSSM.GetParameter
+
+content-type;host;x-amz-date;x-amz-target
+4752ba3f944782fe216fd47d7cd3b60d0f9e0be3caa1b17be66be1c2c7abdb96
+2024-02-26 14:10:26,724 DEBUG StringToSign:
+AWS4-HMAC-SHA256
+20240226T171026Z
+20240226/us-east-1/ssm/aws4_request
+78218253fd2776552ac992fb439e418586042d66c19dccc99b755c483eeeeb02
+2024-02-26 14:10:26,724 DEBUG Signature:
+c4796649d7e923f6bb591cc667c4146edf0c50a0cc8e667962110b82c7aee696
+2024-02-26 14:10:26,724 DEBUG Event request-created.ssm.GetParameter: calling handler <function add_retry_headers at 0x105134f40>
+2024-02-26 14:10:26,724 DEBUG Sending http request: <AWSPreparedRequest stream_output=False, method=POST, url=https://ssm.us-east-1.amazonaws.com/, headers={'X-Amz-Target': b'AmazonSSM.GetParameter', 'Content-Type': b'application/x-amz-json-1.1', 'User-Agent': b'Boto3/1.34.49 md/Botocore#1.34.49 ua/2.0 os/macos#23.3.0 md/arch#arm64 lang/python#3.11.6 md/pyimpl#CPython cfg/retry-mode#legacy Botocore/1.34.49', 'X-Amz-Date': b'20240226T171026Z', 'Authorization': b'AWS4-HMAC-SHA256 Credential=AKIA445N4ETR6GIUCLM4/20240226/us-east-1/ssm/aws4_request, SignedHeaders=content-type;host;x-amz-date;x-amz-target, Signature=c4796649d7e923f6bb591cc667c4146edf0c50a0cc8e667962110b82c7aee696', 'amz-sdk-invocation-id': b'982826c4-9bd9-40f6-9616-941b9fb1b629', 'amz-sdk-request': b'attempt=1', 'Content-Length': '102'}>
+2024-02-26 14:10:26,724 DEBUG Certificate path: /opt/homebrew/lib/python3.11/site-packages/botocore/cacert.pem
+2024-02-26 14:10:26,725 DEBUG Starting new HTTPS connection (1): ssm.us-east-1.amazonaws.com:443
+2024-02-26 14:10:27,317 DEBUG https://ssm.us-east-1.amazonaws.com:443 "POST / HTTP/1.1" 200 311
+2024-02-26 14:10:27,317 DEBUG Response headers: {'Server': 'Server', 'Date': 'Mon, 26 Feb 2024 17:10:27 GMT', 'Content-Type': 'application/x-amz-json-1.1', 'Content-Length': '311', 'Connection': 'keep-alive', 'x-amzn-RequestId': '062b50c9-9576-4784-9b7e-173429a2ee38'}
+2024-02-26 14:10:27,317 DEBUG Response body:
+b'{"Parameter":{"ARN":"arn:aws:ssm:us-east-1::parameter/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-6.1-x86_64","DataType":"text","LastModifiedDate":1.708382212021E9,"Name":"/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-6.1-x86_64","Type":"String","Value":"ami-0440d3b780d96b29d","Version":67}}'
+2024-02-26 14:10:27,318 DEBUG Event needs-retry.ssm.GetParameter: calling handler <botocore.retryhandler.RetryHandler object at 0x115608310>
+2024-02-26 14:10:27,318 DEBUG No retry needed.
+2024-02-26 14:11:50,265 DEBUG Loading JSON file: /opt/homebrew/lib/python3.11/site-packages/boto3/data/ec2/2016-11-15/resources-1.json
+2024-02-26 14:11:50,268 DEBUG Loading JSON file: /opt/homebrew/lib/python3.11/site-packages/botocore/data/endpoints.json
+2024-02-26 14:11:50,275 DEBUG Loading JSON file: /opt/homebrew/lib/python3.11/site-packages/botocore/data/sdk-default-configuration.json
+2024-02-26 14:11:50,276 DEBUG Event choose-service-name: calling handler <function handle_service_name_alias at 0x1050f0180>
+2024-02-26 14:11:50,331 DEBUG Loading JSON file: /opt/homebrew/lib/python3.11/site-packages/botocore/data/ec2/2016-11-15/service-2.json.gz
+2024-02-26 14:11:50,386 DEBUG Loading JSON file: /opt/homebrew/lib/python3.11/site-packages/botocore/data/ec2/2016-11-15/endpoint-rule-set-1.json.gz
+2024-02-26 14:11:50,386 DEBUG Loading JSON file: /opt/homebrew/lib/python3.11/site-packages/botocore/data/partitions.json
+2024-02-26 14:11:50,393 DEBUG Event creating-client-class.ec2: calling handler <function add_generate_presigned_url at 0x105026700>
+2024-02-26 14:11:50,394 DEBUG Looking for endpoint for ec2 via: environment_service
+2024-02-26 14:11:50,394 DEBUG Looking for endpoint for ec2 via: environment_global
+2024-02-26 14:11:50,394 DEBUG Looking for endpoint for ec2 via: config_service
+2024-02-26 14:11:50,394 DEBUG Looking for endpoint for ec2 via: config_global
+2024-02-26 14:11:50,394 DEBUG No configured endpoint found.
+2024-02-26 14:11:50,406 DEBUG Setting ec2 timeout as (60, 60)
+2024-02-26 14:11:50,408 DEBUG Loading JSON file: /opt/homebrew/lib/python3.11/site-packages/botocore/data/_retry.json
+2024-02-26 14:11:50,408 DEBUG Registering retry handlers for service: ec2
+2024-02-26 14:11:50,408 DEBUG Loading ec2:ec2
+2024-02-26 14:11:50,410 DEBUG Event creating-resource-class.ec2.ServiceResource: calling handler <function lazy_call.<locals>._handler at 0x1051e2f20>
+2024-02-26 14:11:50,411 DEBUG Calling ec2:run_instances with {'BlockDeviceMappings': [{'DeviceName': '/dev/xvda', 'Ebs': {'DeleteOnTermination': True, 'VolumeSize': 8, 'VolumeType': 'gp3'}}], 'ImageId': 'ami-0440d3b780d96b29d', 'InstanceType': 't3.medium', 'SecurityGroupIds': ['sg-0d07b8a25f5931664'], 'SubnetId': 'subnet-09c53671781e352d5', 'MaxCount': 1, 'MinCount': 1, 'TagSpecifications': [{'ResourceType': 'instance', 'Tags': [{'Key': 'Name', 'Value': 'VeeamTestVm'}]}], 'UserData': '#!/bin/bash\nyum  update\nyum install python3-pip python3-setuptools -y\npip install boto3\ncd /tmp\nwget https://github.com/barellag/scripts/raw/main/sqstest.py\n', 'IamInstanceProfile': {'Arn': 'arn:aws:iam::202854644357:instance-profile/barella-cross-instance-profile'}, 'KeyName': ''}
+2024-02-26 14:11:50,411 DEBUG Event before-parameter-build.ec2.RunInstances: calling handler <bound method ParameterAlias.alias_parameter_in_call of <botocore.handlers.ParameterAlias object at 0x105140590>>
+2024-02-26 14:11:50,411 DEBUG Event before-parameter-build.ec2.RunInstances: calling handler <function base64_encode_user_data at 0x105103b00>
+2024-02-26 14:11:50,411 DEBUG Event before-parameter-build.ec2.RunInstances: calling handler <function generate_idempotent_uuid at 0x105102ca0>
+2024-02-26 14:11:50,411 DEBUG injecting idempotency token (5db39464-c95f-4832-82a3-2a7e2570ee9e) into param 'ClientToken'.
+2024-02-26 14:11:50,411 DEBUG Calling endpoint provider with parameters: {'Region': 'us-east-1', 'UseDualStack': False, 'UseFIPS': False}
+2024-02-26 14:11:50,411 DEBUG Endpoint provider result: https://ec2.us-east-1.amazonaws.com
+2024-02-26 14:11:50,412 DEBUG Event before-call.ec2.RunInstances: calling handler <function add_recursion_detection_header at 0x1051014e0>
+2024-02-26 14:11:50,412 DEBUG Event before-call.ec2.RunInstances: calling handler <function inject_api_version_header_if_needed at 0x1051347c0>
+2024-02-26 14:11:50,412 DEBUG Making request for OperationModel(name=RunInstances) with params: {'url_path': '/', 'query_string': '', 'method': 'POST', 'headers': {'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8', 'User-Agent': 'Boto3/1.34.49 md/Botocore#1.34.49 ua/2.0 os/macos#23.3.0 md/arch#arm64 lang/python#3.11.6 md/pyimpl#CPython cfg/retry-mode#legacy Botocore/1.34.49 Resource'}, 'body': {'Action': 'RunInstances', 'Version': '2016-11-15', 'BlockDeviceMapping.1.DeviceName': '/dev/xvda', 'BlockDeviceMapping.1.Ebs.DeleteOnTermination': 'true', 'BlockDeviceMapping.1.Ebs.VolumeSize': 8, 'BlockDeviceMapping.1.Ebs.VolumeType': 'gp3', 'ImageId': 'ami-0440d3b780d96b29d', 'InstanceType': 't3.medium', 'SecurityGroupId.1': 'sg-0d07b8a25f5931664', 'SubnetId': 'subnet-09c53671781e352d5', 'MaxCount': 1, 'MinCount': 1, 'TagSpecification.1.ResourceType': 'instance', 'TagSpecification.1.Tag.1.Key': 'Name', 'TagSpecification.1.Tag.1.Value': 'VeeamTestVm', 'UserData': 'IyEvYmluL2Jhc2gKeXVtICB1cGRhdGUKeXVtIGluc3RhbGwgcHl0aG9uMy1waXAgcHl0aG9uMy1zZXR1cHRvb2xzIC15CnBpcCBpbnN0YWxsIGJvdG8zCmNkIC90bXAKd2dldCBodHRwczovL2dpdGh1Yi5jb20vYmFyZWxsYWcvc2NyaXB0cy9yYXcvbWFpbi9zcXN0ZXN0LnB5Cg==', 'IamInstanceProfile.Arn': 'arn:aws:iam::202854644357:instance-profile/barella-cross-instance-profile', 'KeyName': '', 'ClientToken': '5db39464-c95f-4832-82a3-2a7e2570ee9e'}, 'url': 'https://ec2.us-east-1.amazonaws.com/', 'context': {'client_region': 'us-east-1', 'client_config': <botocore.config.Config object at 0x11618c1d0>, 'has_streaming_input': False, 'auth_type': None}}
+2024-02-26 14:11:50,412 DEBUG Event request-created.ec2.RunInstances: calling handler <bound method RequestSigner.handler of <botocore.signers.RequestSigner object at 0x1178ee8d0>>
+2024-02-26 14:11:50,412 DEBUG Event choose-signer.ec2.RunInstances: calling handler <function set_operation_specific_signer at 0x105102b60>
+2024-02-26 14:11:50,412 DEBUG Calculating signature using v4 auth.
+2024-02-26 14:11:50,412 DEBUG CanonicalRequest:
+POST
+/
+
+content-type:application/x-www-form-urlencoded; charset=utf-8
+host:ec2.us-east-1.amazonaws.com
+x-amz-date:20240226T171150Z
+x-amz-security-token:IQoJb3JpZ2luX2VjENr//////////wEaCXVzLWVhc3QtMSJHMEUCIHrl0h4pBB1T6z2zZJYqFJAtSpOlqB4zZSrlJBMd91WjAiEA3J+/Gqn8q1sasYj6owh9pN3Fa1+Lsd1fKlAkzbB/lp0qzgIIwv//////////ARABGgwyMDI4NTQ2NDQzNTciDFlSBTPn3IllpIEkbyqiAkU3U5ymu+ORhQf7JOSDP5rATdl9LnbwZjOarGfnQc7/ZSjbnhiG1x3yf+UA5KLc4Sdqwdca+A3MIgjgCKTkL7GR0BJHogr1ydHQFvhHI8dQ0eXBj82OwCMYHtjCm08+N8TJF+c6KGtLdRRNtpG3ykvIMK4AtULoDATSeodEfBYIzxXhP9hKjPRTxkotMX6P/3vj/QBP4ophqeFpKLrDPYW8d5KhNqLYpmK6ID1g4cNBNNhIe00lZCOLcZRetwuv9ludZ70n55z3JCLj1ldfyrSSahS8ca49rp/laBR5f9+drPWB53LII2DhrFsOjCwKArSUVuYH3bJBMvvWl2PnbGQ4/9rGDqLqIRKKtl2JB5BIWi/onGBKzf/4yKcuXX5WtUduMIGM864GOp0BXDHHgalDDPRstSbSvlIyKSVSli2X1HzEqqL3TeConvTAtxe6xKecD2PO5R6Z0U7BDHKGTFN5OslWdbpGLdsmWW30qCraA76RDHCe7+FoBbE+ZNSoz+NupHecz/TmcmWXyaTb3ZyNnlXuad/jkQO/PrugeFQjXXci4ElC0AznMgkJaouXS1Xd5yViYNu4V+hFa9urzwoegXpi8UOryw==
+
+content-type;host;x-amz-date;x-amz-security-token
+519c1d2b48af300ef17629d2205fabd328c852144ef745985aa86037773e18ce
+2024-02-26 14:11:50,412 DEBUG StringToSign:
+AWS4-HMAC-SHA256
+20240226T171150Z
+20240226/us-east-1/ec2/aws4_request
+90fdbc02194ba4fc1b4addc1604eaea837e06292dea7d8b7320ce8cb9f617429
+2024-02-26 14:11:50,412 DEBUG Signature:
+b8018f319f9eaef7bea16992102add8ec45ad1f645f30c04ddcb07a445ea63aa
+2024-02-26 14:11:50,412 DEBUG Event request-created.ec2.RunInstances: calling handler <function add_retry_headers at 0x105134f40>
+2024-02-26 14:11:50,412 DEBUG Sending http request: <AWSPreparedRequest stream_output=False, method=POST, url=https://ec2.us-east-1.amazonaws.com/, headers={'Content-Type': b'application/x-www-form-urlencoded; charset=utf-8', 'User-Agent': b'Boto3/1.34.49 md/Botocore#1.34.49 ua/2.0 os/macos#23.3.0 md/arch#arm64 lang/python#3.11.6 md/pyimpl#CPython cfg/retry-mode#legacy Botocore/1.34.49 Resource', 'X-Amz-Date': b'20240226T171150Z', 'X-Amz-Security-Token': b'IQoJb3JpZ2luX2VjENr//////////wEaCXVzLWVhc3QtMSJHMEUCIHrl0h4pBB1T6z2zZJYqFJAtSpOlqB4zZSrlJBMd91WjAiEA3J+/Gqn8q1sasYj6owh9pN3Fa1+Lsd1fKlAkzbB/lp0qzgIIwv//////////ARABGgwyMDI4NTQ2NDQzNTciDFlSBTPn3IllpIEkbyqiAkU3U5ymu+ORhQf7JOSDP5rATdl9LnbwZjOarGfnQc7/ZSjbnhiG1x3yf+UA5KLc4Sdqwdca+A3MIgjgCKTkL7GR0BJHogr1ydHQFvhHI8dQ0eXBj82OwCMYHtjCm08+N8TJF+c6KGtLdRRNtpG3ykvIMK4AtULoDATSeodEfBYIzxXhP9hKjPRTxkotMX6P/3vj/QBP4ophqeFpKLrDPYW8d5KhNqLYpmK6ID1g4cNBNNhIe00lZCOLcZRetwuv9ludZ70n55z3JCLj1ldfyrSSahS8ca49rp/laBR5f9+drPWB53LII2DhrFsOjCwKArSUVuYH3bJBMvvWl2PnbGQ4/9rGDqLqIRKKtl2JB5BIWi/onGBKzf/4yKcuXX5WtUduMIGM864GOp0BXDHHgalDDPRstSbSvlIyKSVSli2X1HzEqqL3TeConvTAtxe6xKecD2PO5R6Z0U7BDHKGTFN5OslWdbpGLdsmWW30qCraA76RDHCe7+FoBbE+ZNSoz+NupHecz/TmcmWXyaTb3ZyNnlXuad/jkQO/PrugeFQjXXci4ElC0AznMgkJaouXS1Xd5yViYNu4V+hFa9urzwoegXpi8UOryw==', 'Authorization': b'AWS4-HMAC-SHA256 Credential=ASIAS6OYUHKC5JOOAMUH/20240226/us-east-1/ec2/aws4_request, SignedHeaders=content-type;host;x-amz-date;x-amz-security-token, Signature=b8018f319f9eaef7bea16992102add8ec45ad1f645f30c04ddcb07a445ea63aa', 'amz-sdk-invocation-id': b'2fe42bae-18fe-45fa-8943-f72bc28c86ab', 'amz-sdk-request': b'attempt=1', 'Content-Length': '871'}>
+2024-02-26 14:11:50,412 DEBUG Certificate path: /opt/homebrew/lib/python3.11/site-packages/botocore/cacert.pem
+2024-02-26 14:11:50,413 DEBUG Starting new HTTPS connection (1): ec2.us-east-1.amazonaws.com:443
+2024-02-26 14:11:51,440 DEBUG https://ec2.us-east-1.amazonaws.com:443 "POST / HTTP/1.1" 400 None
+2024-02-26 14:11:51,440 DEBUG Response headers: {'x-amzn-RequestId': '9387519b-a960-4561-870f-d628fe0410cf', 'Cache-Control': 'no-cache, no-store', 'Strict-Transport-Security': 'max-age=31536000; includeSubDomains', 'vary': 'accept-encoding', 'Content-Type': 'text/xml;charset=UTF-8', 'Transfer-Encoding': 'chunked', 'Date': 'Mon, 26 Feb 2024 17:11:50 GMT', 'Connection': 'close', 'Server': 'AmazonEC2'}
+2024-02-26 14:11:51,440 DEBUG Response body:
+b'<?xml version="1.0" encoding="UTF-8"?>\n<Response><Errors><Error><Code>InvalidParameterValue</Code><Message>Invalid value \'\' for keyPairNames. It should not be blank</Message></Error></Errors><RequestID>9387519b-a960-4561-870f-d628fe0410cf</RequestID></Response>'
+2024-02-26 14:11:51,444 DEBUG Event needs-retry.ec2.RunInstances: calling handler <botocore.retryhandler.RetryHandler object at 0x117850310>
+2024-02-26 14:11:51,444 DEBUG No retry needed.
+2024-02-26 14:12:00,388 INFO Script Started
+2024-02-26 14:12:25,464 DEBUG Changing event name from creating-client-class.iot-data to creating-client-class.iot-data-plane
+2024-02-26 14:12:25,467 DEBUG Changing event name from before-call.apigateway to before-call.api-gateway
+2024-02-26 14:12:25,468 DEBUG Changing event name from request-created.machinelearning.Predict to request-created.machine-learning.Predict
+2024-02-26 14:12:25,469 DEBUG Changing event name from before-parameter-build.autoscaling.CreateLaunchConfiguration to before-parameter-build.auto-scaling.CreateLaunchConfiguration
+2024-02-26 14:12:25,470 DEBUG Changing event name from before-parameter-build.route53 to before-parameter-build.route-53
+2024-02-26 14:12:25,470 DEBUG Changing event name from request-created.cloudsearchdomain.Search to request-created.cloudsearch-domain.Search
+2024-02-26 14:12:25,471 DEBUG Changing event name from docs.*.autoscaling.CreateLaunchConfiguration.complete-section to docs.*.auto-scaling.CreateLaunchConfiguration.complete-section
+2024-02-26 14:12:25,472 DEBUG Changing event name from before-parameter-build.logs.CreateExportTask to before-parameter-build.cloudwatch-logs.CreateExportTask
+2024-02-26 14:12:25,472 DEBUG Changing event name from docs.*.logs.CreateExportTask.complete-section to docs.*.cloudwatch-logs.CreateExportTask.complete-section
+2024-02-26 14:12:25,472 DEBUG Changing event name from before-parameter-build.cloudsearchdomain.Search to before-parameter-build.cloudsearch-domain.Search
+2024-02-26 14:12:25,472 DEBUG Changing event name from docs.*.cloudsearchdomain.Search.complete-section to docs.*.cloudsearch-domain.Search.complete-section
+2024-02-26 14:12:25,475 DEBUG IMDS ENDPOINT: http://169.254.169.254/
+2024-02-26 14:12:25,482 DEBUG Looking for credentials via: env
+2024-02-26 14:12:25,482 DEBUG Looking for credentials via: assume-role
+2024-02-26 14:12:25,482 DEBUG Looking for credentials via: assume-role-with-web-identity
+2024-02-26 14:12:25,482 DEBUG Looking for credentials via: sso
+2024-02-26 14:12:25,482 DEBUG Looking for credentials via: shared-credentials-file
+2024-02-26 14:12:25,483 INFO Found credentials in shared credentials file: ~/.aws/credentials
+2024-02-26 14:12:25,484 DEBUG Loading JSON file: /opt/homebrew/lib/python3.11/site-packages/botocore/data/endpoints.json
+2024-02-26 14:12:25,489 DEBUG Loading JSON file: /opt/homebrew/lib/python3.11/site-packages/botocore/data/sdk-default-configuration.json
+2024-02-26 14:12:25,490 DEBUG Event choose-service-name: calling handler <function handle_service_name_alias at 0x101a10180>
+2024-02-26 14:12:25,545 DEBUG Loading JSON file: /opt/homebrew/lib/python3.11/site-packages/botocore/data/sts/2011-06-15/service-2.json.gz
+2024-02-26 14:12:25,581 DEBUG Loading JSON file: /opt/homebrew/lib/python3.11/site-packages/botocore/data/sts/2011-06-15/endpoint-rule-set-1.json.gz
+2024-02-26 14:12:25,582 DEBUG Loading JSON file: /opt/homebrew/lib/python3.11/site-packages/botocore/data/partitions.json
+2024-02-26 14:12:25,582 DEBUG Event creating-client-class.sts: calling handler <function add_generate_presigned_url at 0x10194a700>
+2024-02-26 14:12:25,582 DEBUG Looking for endpoint for sts via: environment_service
+2024-02-26 14:12:25,582 DEBUG Looking for endpoint for sts via: environment_global
+2024-02-26 14:12:25,582 DEBUG Looking for endpoint for sts via: config_service
+2024-02-26 14:12:25,582 DEBUG Looking for endpoint for sts via: config_global
+2024-02-26 14:12:25,582 DEBUG No configured endpoint found.
+2024-02-26 14:12:25,590 DEBUG Setting sts timeout as (60, 60)
+2024-02-26 14:12:25,591 DEBUG Loading JSON file: /opt/homebrew/lib/python3.11/site-packages/botocore/data/_retry.json
+2024-02-26 14:12:25,592 DEBUG Registering retry handlers for service: sts
+2024-02-26 14:12:25,592 DEBUG Event before-parameter-build.sts.AssumeRole: calling handler <function generate_idempotent_uuid at 0x101a26ca0>
+2024-02-26 14:12:25,592 DEBUG Calling endpoint provider with parameters: {'Region': 'us-east-1', 'UseDualStack': False, 'UseFIPS': False, 'UseGlobalEndpoint': True}
+2024-02-26 14:12:25,592 DEBUG Endpoint provider result: https://sts.amazonaws.com
+2024-02-26 14:12:25,592 DEBUG Selecting from endpoint provider's list of auth schemes: "sigv4". User selected auth scheme is: "None"
+2024-02-26 14:12:25,592 DEBUG Selected auth type "v4" as "v4" with signing context params: {'region': 'us-east-1', 'signing_name': 'sts'}
+2024-02-26 14:12:25,592 DEBUG Event before-call.sts.AssumeRole: calling handler <function add_recursion_detection_header at 0x101a254e0>
+2024-02-26 14:12:25,593 DEBUG Event before-call.sts.AssumeRole: calling handler <function inject_api_version_header_if_needed at 0x101a587c0>
+2024-02-26 14:12:25,593 DEBUG Making request for OperationModel(name=AssumeRole) with params: {'url_path': '/', 'query_string': '', 'method': 'POST', 'headers': {'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8', 'User-Agent': 'Boto3/1.34.49 md/Botocore#1.34.49 ua/2.0 os/macos#23.3.0 md/arch#arm64 lang/python#3.11.6 md/pyimpl#CPython cfg/retry-mode#legacy Botocore/1.34.49'}, 'body': {'Action': 'AssumeRole', 'Version': '2011-06-15', 'RoleArn': 'arn:aws:iam::202854644357:role/veeam/path/barella-cross-path', 'RoleSessionName': 'VeeamSupportSQSTest-ed486e64-e325-4992-9754-a08f09556f60', 'DurationSeconds': 900}, 'url': 'https://sts.amazonaws.com/', 'context': {'client_region': 'us-east-1', 'client_config': <botocore.config.Config object at 0x1071e8c10>, 'has_streaming_input': False, 'auth_type': 'v4', 'signing': {'region': 'us-east-1', 'signing_name': 'sts'}, 'endpoint_properties': {'authSchemes': [{'name': 'sigv4', 'signingName': 'sts', 'signingRegion': 'us-east-1'}]}}}
+2024-02-26 14:12:25,593 DEBUG Event request-created.sts.AssumeRole: calling handler <bound method RequestSigner.handler of <botocore.signers.RequestSigner object at 0x1071e8bd0>>
+2024-02-26 14:12:25,593 DEBUG Event choose-signer.sts.AssumeRole: calling handler <function set_operation_specific_signer at 0x101a26b60>
+2024-02-26 14:12:25,593 DEBUG Calculating signature using v4 auth.
+2024-02-26 14:12:25,593 DEBUG CanonicalRequest:
+POST
+/
+
+content-type:application/x-www-form-urlencoded; charset=utf-8
+host:sts.amazonaws.com
+x-amz-date:20240226T171225Z
+
+content-type;host;x-amz-date
+02b46eeca1b48006cabc1b2e0d10868ae3245cc7a9b898345e8e6ced5d64b21e
+2024-02-26 14:12:25,593 DEBUG StringToSign:
+AWS4-HMAC-SHA256
+20240226T171225Z
+20240226/us-east-1/sts/aws4_request
+ad00a9a6679c3c278992f0ad834a2cfb97f50448773fbdf2114476f0e3baf64f
+2024-02-26 14:12:25,593 DEBUG Signature:
+b2d1b35f605845932e15799ab46bf359ad342e363f9077049b679e7faba9fa83
+2024-02-26 14:12:25,593 DEBUG Event request-created.sts.AssumeRole: calling handler <function add_retry_headers at 0x101a58f40>
+2024-02-26 14:12:25,593 DEBUG Sending http request: <AWSPreparedRequest stream_output=False, method=POST, url=https://sts.amazonaws.com/, headers={'Content-Type': b'application/x-www-form-urlencoded; charset=utf-8', 'User-Agent': b'Boto3/1.34.49 md/Botocore#1.34.49 ua/2.0 os/macos#23.3.0 md/arch#arm64 lang/python#3.11.6 md/pyimpl#CPython cfg/retry-mode#legacy Botocore/1.34.49', 'X-Amz-Date': b'20240226T171225Z', 'Authorization': b'AWS4-HMAC-SHA256 Credential=AKIA445N4ETR6GIUCLM4/20240226/us-east-1/sts/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature=b2d1b35f605845932e15799ab46bf359ad342e363f9077049b679e7faba9fa83', 'amz-sdk-invocation-id': b'818db214-1f30-4f84-85cb-8fc5b640b3e0', 'amz-sdk-request': b'attempt=1', 'Content-Length': '214'}>
+2024-02-26 14:12:25,593 DEBUG Certificate path: /opt/homebrew/lib/python3.11/site-packages/botocore/cacert.pem
+2024-02-26 14:12:25,593 DEBUG Starting new HTTPS connection (1): sts.amazonaws.com:443
+2024-02-26 14:12:26,186 DEBUG https://sts.amazonaws.com:443 "POST / HTTP/1.1" 200 1613
+2024-02-26 14:12:26,186 DEBUG Response headers: {'x-amzn-RequestId': 'fae94c93-1a46-4703-88b7-0bf4645627b4', 'Content-Type': 'text/xml', 'Content-Length': '1613', 'Date': 'Mon, 26 Feb 2024 17:12:26 GMT'}
+2024-02-26 14:12:26,186 DEBUG Response body:
+b'<AssumeRoleResponse xmlns="https://sts.amazonaws.com/doc/2011-06-15/">\n  <AssumeRoleResult>\n    <AssumedRoleUser>\n      <AssumedRoleId>AROAS6OYUHKCTZSHMWOWI:VeeamSupportSQSTest-ed486e64-e325-4992-9754-a08f09556f60</AssumedRoleId>\n      <Arn>arn:aws:sts::202854644357:assumed-role/barella-cross-path/VeeamSupportSQSTest-ed486e64-e325-4992-9754-a08f09556f60</Arn>\n    </AssumedRoleUser>\n    <Credentials>\n      <AccessKeyId>ASIAS6OYUHKCXAXLLXMQ</AccessKeyId>\n      <SecretAccessKey>EfrfksioVSZT+O5QfMlIZWBTyXxXGAVwUJCTjzk6</SecretAccessKey>\n      <SessionToken>IQoJb3JpZ2luX2VjENr//////////wEaCXVzLWVhc3QtMSJIMEYCIQDECi3fOmgvVew1FKuvn/vNpTt/P/n2oB5qt9pB+qtyzQIhAImBPC1b3T3gkrpL/kgLv8IAWdKa8vFT+NEgKvFkSdFaKs4CCML//////////wEQARoMMjAyODU0NjQ0MzU3IgyPsJYLQAWDxAjQm7MqogKvmOOKG91TDHg37D4kepCljrkAMgpE0jG/7INq8wGUh4v9j0UnpXPr+328ZGFsib/EK434Cq/ZW5shH8Up/0oLmamvn05SPtKNwLb6xEj4l+zxvq4v83MZzuVzV/J9EFxCrX40afWq0VSWBXL7yV5HUeTAFaYTgyhSvkLG/abwQrmaCOlVF9uEhZXMrHg8PI7yS6pU/W4DFknM2mvNQK9hBf59SZ+X5gAkEVePQGMYN2danqcDHphM5pJHej/7aXAc6qTWFvoETp+NU4P3VgjX9t0BTFSW/dNSnR22yOnx6MXcAxrRSO6/J2SYizcayCZJkHJMzmSmGKdlgKx6IkIF2jOY5xjKT5qHdxW9T5bEFHp3HqkBkfT+wxSV/iQI/O0czjD6jPOuBjqcAWzIBwWzkwRUGpHJLkyZt7abxWlDVg99UJhbg+Z4i+txI5Btu/R7PaWzDPCaSTp1tuy9jwaCT1iSDyj8Wp9gZs7zzbCnnE28FE7p6ixdaKBRsBBhTSE535GxZjLUnkQLlDZkR+l5DpDfEaq+T/STikIdGhkD5aUxUogFRYgmLE1T5byrmzZ7Mkj5u9+hMa8aG1DlNtb/jmi/JUi8Vw==</SessionToken>\n      <Expiration>2024-02-26T17:27:26Z</Expiration>\n    </Credentials>\n  </AssumeRoleResult>\n  <ResponseMetadata>\n    <RequestId>fae94c93-1a46-4703-88b7-0bf4645627b4</RequestId>\n  </ResponseMetadata>\n</AssumeRoleResponse>\n'
+2024-02-26 14:12:26,187 DEBUG Event needs-retry.sts.AssumeRole: calling handler <botocore.retryhandler.RetryHandler object at 0x1071fa210>
+2024-02-26 14:12:26,187 DEBUG No retry needed.
+2024-02-26 14:12:27,197 DEBUG Changing event name from creating-client-class.iot-data to creating-client-class.iot-data-plane
+2024-02-26 14:12:27,200 DEBUG Changing event name from before-call.apigateway to before-call.api-gateway
+2024-02-26 14:12:27,200 DEBUG Changing event name from request-created.machinelearning.Predict to request-created.machine-learning.Predict
+2024-02-26 14:12:27,202 DEBUG Changing event name from before-parameter-build.autoscaling.CreateLaunchConfiguration to before-parameter-build.auto-scaling.CreateLaunchConfiguration
+2024-02-26 14:12:27,202 DEBUG Changing event name from before-parameter-build.route53 to before-parameter-build.route-53
+2024-02-26 14:12:27,203 DEBUG Changing event name from request-created.cloudsearchdomain.Search to request-created.cloudsearch-domain.Search
+2024-02-26 14:12:27,203 DEBUG Changing event name from docs.*.autoscaling.CreateLaunchConfiguration.complete-section to docs.*.auto-scaling.CreateLaunchConfiguration.complete-section
+2024-02-26 14:12:27,206 DEBUG Changing event name from before-parameter-build.logs.CreateExportTask to before-parameter-build.cloudwatch-logs.CreateExportTask
+2024-02-26 14:12:27,206 DEBUG Changing event name from docs.*.logs.CreateExportTask.complete-section to docs.*.cloudwatch-logs.CreateExportTask.complete-section
+2024-02-26 14:12:27,206 DEBUG Changing event name from before-parameter-build.cloudsearchdomain.Search to before-parameter-build.cloudsearch-domain.Search
+2024-02-26 14:12:27,206 DEBUG Changing event name from docs.*.cloudsearchdomain.Search.complete-section to docs.*.cloudsearch-domain.Search.complete-section
+2024-02-26 14:12:27,207 DEBUG Changing event name from creating-client-class.iot-data to creating-client-class.iot-data-plane
+2024-02-26 14:12:27,208 DEBUG Changing event name from before-call.apigateway to before-call.api-gateway
+2024-02-26 14:12:27,208 DEBUG Changing event name from request-created.machinelearning.Predict to request-created.machine-learning.Predict
+2024-02-26 14:12:27,209 DEBUG Changing event name from before-parameter-build.autoscaling.CreateLaunchConfiguration to before-parameter-build.auto-scaling.CreateLaunchConfiguration
+2024-02-26 14:12:27,209 DEBUG Changing event name from before-parameter-build.route53 to before-parameter-build.route-53
+2024-02-26 14:12:27,209 DEBUG Changing event name from request-created.cloudsearchdomain.Search to request-created.cloudsearch-domain.Search
+2024-02-26 14:12:27,210 DEBUG Changing event name from docs.*.autoscaling.CreateLaunchConfiguration.complete-section to docs.*.auto-scaling.CreateLaunchConfiguration.complete-section
+2024-02-26 14:12:27,211 DEBUG Changing event name from before-parameter-build.logs.CreateExportTask to before-parameter-build.cloudwatch-logs.CreateExportTask
+2024-02-26 14:12:27,211 DEBUG Changing event name from docs.*.logs.CreateExportTask.complete-section to docs.*.cloudwatch-logs.CreateExportTask.complete-section
+2024-02-26 14:12:27,211 DEBUG Changing event name from before-parameter-build.cloudsearchdomain.Search to before-parameter-build.cloudsearch-domain.Search
+2024-02-26 14:12:27,211 DEBUG Changing event name from docs.*.cloudsearchdomain.Search.complete-section to docs.*.cloudsearch-domain.Search.complete-section
+2024-02-26 14:12:27,212 DEBUG IMDS ENDPOINT: http://169.254.169.254/
+2024-02-26 14:12:27,212 DEBUG Looking for credentials via: env
+2024-02-26 14:12:27,212 DEBUG Looking for credentials via: assume-role
+2024-02-26 14:12:27,212 DEBUG Looking for credentials via: assume-role-with-web-identity
+2024-02-26 14:12:27,212 DEBUG Looking for credentials via: sso
+2024-02-26 14:12:27,212 DEBUG Looking for credentials via: shared-credentials-file
+2024-02-26 14:12:27,213 INFO Found credentials in shared credentials file: ~/.aws/credentials
+2024-02-26 14:12:27,213 DEBUG Loading JSON file: /opt/homebrew/lib/python3.11/site-packages/botocore/data/endpoints.json
+2024-02-26 14:12:27,220 DEBUG Loading JSON file: /opt/homebrew/lib/python3.11/site-packages/botocore/data/sdk-default-configuration.json
+2024-02-26 14:12:27,220 DEBUG Event choose-service-name: calling handler <function handle_service_name_alias at 0x101a10180>
+2024-02-26 14:12:27,275 DEBUG Loading JSON file: /opt/homebrew/lib/python3.11/site-packages/botocore/data/ssm/2014-11-06/service-2.json.gz
+2024-02-26 14:12:27,332 DEBUG Loading JSON file: /opt/homebrew/lib/python3.11/site-packages/botocore/data/ssm/2014-11-06/endpoint-rule-set-1.json.gz
+2024-02-26 14:12:27,332 DEBUG Loading JSON file: /opt/homebrew/lib/python3.11/site-packages/botocore/data/partitions.json
+2024-02-26 14:12:27,334 DEBUG Event creating-client-class.ssm: calling handler <function add_generate_presigned_url at 0x10194a700>
+2024-02-26 14:12:27,334 DEBUG Looking for endpoint for ssm via: environment_service
+2024-02-26 14:12:27,334 DEBUG Looking for endpoint for ssm via: environment_global
+2024-02-26 14:12:27,334 DEBUG Looking for endpoint for ssm via: config_service
+2024-02-26 14:12:27,334 DEBUG Looking for endpoint for ssm via: config_global
+2024-02-26 14:12:27,334 DEBUG No configured endpoint found.
+2024-02-26 14:12:27,462 DEBUG Setting ssm timeout as (60, 60)
+2024-02-26 14:12:27,463 DEBUG Loading JSON file: /opt/homebrew/lib/python3.11/site-packages/botocore/data/_retry.json
+2024-02-26 14:12:27,464 DEBUG Registering retry handlers for service: ssm
+2024-02-26 14:12:27,464 DEBUG Event before-parameter-build.ssm.GetParameter: calling handler <function generate_idempotent_uuid at 0x101a26ca0>
+2024-02-26 14:12:27,464 DEBUG Calling endpoint provider with parameters: {'Region': 'us-east-1', 'UseDualStack': False, 'UseFIPS': False}
+2024-02-26 14:12:27,464 DEBUG Endpoint provider result: https://ssm.us-east-1.amazonaws.com
+2024-02-26 14:12:27,464 DEBUG Event before-call.ssm.GetParameter: calling handler <function add_recursion_detection_header at 0x101a254e0>
+2024-02-26 14:12:27,464 DEBUG Event before-call.ssm.GetParameter: calling handler <function inject_api_version_header_if_needed at 0x101a587c0>
+2024-02-26 14:12:27,464 DEBUG Making request for OperationModel(name=GetParameter) with params: {'url_path': '/', 'query_string': '', 'method': 'POST', 'headers': {'X-Amz-Target': 'AmazonSSM.GetParameter', 'Content-Type': 'application/x-amz-json-1.1', 'User-Agent': 'Boto3/1.34.49 md/Botocore#1.34.49 ua/2.0 os/macos#23.3.0 md/arch#arm64 lang/python#3.11.6 md/pyimpl#CPython cfg/retry-mode#legacy Botocore/1.34.49'}, 'body': b'{"Name": "/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-6.1-x86_64", "WithDecryption": false}', 'url': 'https://ssm.us-east-1.amazonaws.com/', 'context': {'client_region': 'us-east-1', 'client_config': <botocore.config.Config object at 0x1079fab90>, 'has_streaming_input': False, 'auth_type': None}}
+2024-02-26 14:12:27,465 DEBUG Event request-created.ssm.GetParameter: calling handler <bound method RequestSigner.handler of <botocore.signers.RequestSigner object at 0x107a2b250>>
+2024-02-26 14:12:27,465 DEBUG Event choose-signer.ssm.GetParameter: calling handler <function set_operation_specific_signer at 0x101a26b60>
+2024-02-26 14:12:27,465 DEBUG Calculating signature using v4 auth.
+2024-02-26 14:12:27,465 DEBUG CanonicalRequest:
+POST
+/
+
+content-type:application/x-amz-json-1.1
+host:ssm.us-east-1.amazonaws.com
+x-amz-date:20240226T171227Z
+x-amz-target:AmazonSSM.GetParameter
+
+content-type;host;x-amz-date;x-amz-target
+4752ba3f944782fe216fd47d7cd3b60d0f9e0be3caa1b17be66be1c2c7abdb96
+2024-02-26 14:12:27,465 DEBUG StringToSign:
+AWS4-HMAC-SHA256
+20240226T171227Z
+20240226/us-east-1/ssm/aws4_request
+e202e97da49067774f4ecc34ced2ee20880e0f41e6e0460e4bfbb7e032c4a608
+2024-02-26 14:12:27,465 DEBUG Signature:
+a73f5c0327a161c4d6ebe514ece4e5d0a6765623bfbe46d8cb5a37869660f945
+2024-02-26 14:12:27,465 DEBUG Event request-created.ssm.GetParameter: calling handler <function add_retry_headers at 0x101a58f40>
+2024-02-26 14:12:27,465 DEBUG Sending http request: <AWSPreparedRequest stream_output=False, method=POST, url=https://ssm.us-east-1.amazonaws.com/, headers={'X-Amz-Target': b'AmazonSSM.GetParameter', 'Content-Type': b'application/x-amz-json-1.1', 'User-Agent': b'Boto3/1.34.49 md/Botocore#1.34.49 ua/2.0 os/macos#23.3.0 md/arch#arm64 lang/python#3.11.6 md/pyimpl#CPython cfg/retry-mode#legacy Botocore/1.34.49', 'X-Amz-Date': b'20240226T171227Z', 'Authorization': b'AWS4-HMAC-SHA256 Credential=AKIA445N4ETR6GIUCLM4/20240226/us-east-1/ssm/aws4_request, SignedHeaders=content-type;host;x-amz-date;x-amz-target, Signature=a73f5c0327a161c4d6ebe514ece4e5d0a6765623bfbe46d8cb5a37869660f945', 'amz-sdk-invocation-id': b'605e9959-4c19-45fa-8fc9-73fefca26752', 'amz-sdk-request': b'attempt=1', 'Content-Length': '102'}>
+2024-02-26 14:12:27,465 DEBUG Certificate path: /opt/homebrew/lib/python3.11/site-packages/botocore/cacert.pem
+2024-02-26 14:12:27,465 DEBUG Starting new HTTPS connection (1): ssm.us-east-1.amazonaws.com:443
+2024-02-26 14:12:28,071 DEBUG https://ssm.us-east-1.amazonaws.com:443 "POST / HTTP/1.1" 200 311
+2024-02-26 14:12:28,071 DEBUG Response headers: {'Server': 'Server', 'Date': 'Mon, 26 Feb 2024 17:12:28 GMT', 'Content-Type': 'application/x-amz-json-1.1', 'Content-Length': '311', 'Connection': 'keep-alive', 'x-amzn-RequestId': 'c6e1c060-3a56-48b2-a17a-5ef9e0940c1a'}
+2024-02-26 14:12:28,071 DEBUG Response body:
+b'{"Parameter":{"ARN":"arn:aws:ssm:us-east-1::parameter/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-6.1-x86_64","DataType":"text","LastModifiedDate":1.708382212021E9,"Name":"/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-6.1-x86_64","Type":"String","Value":"ami-0440d3b780d96b29d","Version":67}}'
+2024-02-26 14:12:28,072 DEBUG Event needs-retry.ssm.GetParameter: calling handler <botocore.retryhandler.RetryHandler object at 0x10724c110>
+2024-02-26 14:12:28,072 DEBUG No retry needed.
+2024-02-26 14:12:58,256 DEBUG Loading JSON file: /opt/homebrew/lib/python3.11/site-packages/boto3/data/ec2/2016-11-15/resources-1.json
+2024-02-26 14:12:58,258 DEBUG Loading JSON file: /opt/homebrew/lib/python3.11/site-packages/botocore/data/endpoints.json
+2024-02-26 14:12:58,266 DEBUG Loading JSON file: /opt/homebrew/lib/python3.11/site-packages/botocore/data/sdk-default-configuration.json
+2024-02-26 14:12:58,266 DEBUG Event choose-service-name: calling handler <function handle_service_name_alias at 0x101a10180>
+2024-02-26 14:12:58,303 DEBUG Loading JSON file: /opt/homebrew/lib/python3.11/site-packages/botocore/data/ec2/2016-11-15/service-2.json.gz
+2024-02-26 14:12:58,365 DEBUG Loading JSON file: /opt/homebrew/lib/python3.11/site-packages/botocore/data/ec2/2016-11-15/endpoint-rule-set-1.json.gz
+2024-02-26 14:12:58,366 DEBUG Loading JSON file: /opt/homebrew/lib/python3.11/site-packages/botocore/data/partitions.json
+2024-02-26 14:12:58,373 DEBUG Event creating-client-class.ec2: calling handler <function add_generate_presigned_url at 0x10194a700>
+2024-02-26 14:12:58,373 DEBUG Looking for endpoint for ec2 via: environment_service
+2024-02-26 14:12:58,373 DEBUG Looking for endpoint for ec2 via: environment_global
+2024-02-26 14:12:58,373 DEBUG Looking for endpoint for ec2 via: config_service
+2024-02-26 14:12:58,373 DEBUG Looking for endpoint for ec2 via: config_global
+2024-02-26 14:12:58,373 DEBUG No configured endpoint found.
+2024-02-26 14:12:58,393 DEBUG Setting ec2 timeout as (60, 60)
+2024-02-26 14:12:58,394 DEBUG Loading JSON file: /opt/homebrew/lib/python3.11/site-packages/botocore/data/_retry.json
+2024-02-26 14:12:58,394 DEBUG Registering retry handlers for service: ec2
+2024-02-26 14:12:58,394 DEBUG Loading ec2:ec2
+2024-02-26 14:12:58,395 DEBUG Event creating-resource-class.ec2.ServiceResource: calling handler <function lazy_call.<locals>._handler at 0x101b06f20>
+2024-02-26 14:12:58,396 DEBUG Calling ec2:run_instances with {'BlockDeviceMappings': [{'DeviceName': '/dev/xvda', 'Ebs': {'DeleteOnTermination': True, 'VolumeSize': 8, 'VolumeType': 'gp3'}}], 'ImageId': 'ami-0440d3b780d96b29d', 'InstanceType': 't3.medium', 'SecurityGroupIds': ['sg-0d07b8a25f5931664'], 'SubnetId': 'subnet-09c53671781e352d5', 'MaxCount': 1, 'MinCount': 1, 'TagSpecifications': [{'ResourceType': 'instance', 'Tags': [{'Key': 'Name', 'Value': 'VeeamTestVm'}]}], 'UserData': '#!/bin/bash\nyum  update\nyum install python3-pip python3-setuptools -y\npip install boto3\ncd /tmp\nwget https://github.com/barellag/scripts/raw/main/sqstest.py\n', 'IamInstanceProfile': {'Arn': 'arn:aws:iam::202854644357:instance-profile/barella-cross-instance-profile'}, 'KeyName': 'gbarella-2nd-cloud'}
+2024-02-26 14:12:58,396 DEBUG Event before-parameter-build.ec2.RunInstances: calling handler <bound method ParameterAlias.alias_parameter_in_call of <botocore.handlers.ParameterAlias object at 0x101a60710>>
+2024-02-26 14:12:58,397 DEBUG Event before-parameter-build.ec2.RunInstances: calling handler <function base64_encode_user_data at 0x101a27b00>
+2024-02-26 14:12:58,397 DEBUG Event before-parameter-build.ec2.RunInstances: calling handler <function generate_idempotent_uuid at 0x101a26ca0>
+2024-02-26 14:12:58,397 DEBUG injecting idempotency token (43000f83-ab3f-4cbd-b2de-dd05b5fa0fb0) into param 'ClientToken'.
+2024-02-26 14:12:58,397 DEBUG Calling endpoint provider with parameters: {'Region': 'us-east-1', 'UseDualStack': False, 'UseFIPS': False}
+2024-02-26 14:12:58,397 DEBUG Endpoint provider result: https://ec2.us-east-1.amazonaws.com
+2024-02-26 14:12:58,397 DEBUG Event before-call.ec2.RunInstances: calling handler <function add_recursion_detection_header at 0x101a254e0>
+2024-02-26 14:12:58,397 DEBUG Event before-call.ec2.RunInstances: calling handler <function inject_api_version_header_if_needed at 0x101a587c0>
+2024-02-26 14:12:58,397 DEBUG Making request for OperationModel(name=RunInstances) with params: {'url_path': '/', 'query_string': '', 'method': 'POST', 'headers': {'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8', 'User-Agent': 'Boto3/1.34.49 md/Botocore#1.34.49 ua/2.0 os/macos#23.3.0 md/arch#arm64 lang/python#3.11.6 md/pyimpl#CPython cfg/retry-mode#legacy Botocore/1.34.49 Resource'}, 'body': {'Action': 'RunInstances', 'Version': '2016-11-15', 'BlockDeviceMapping.1.DeviceName': '/dev/xvda', 'BlockDeviceMapping.1.Ebs.DeleteOnTermination': 'true', 'BlockDeviceMapping.1.Ebs.VolumeSize': 8, 'BlockDeviceMapping.1.Ebs.VolumeType': 'gp3', 'ImageId': 'ami-0440d3b780d96b29d', 'InstanceType': 't3.medium', 'SecurityGroupId.1': 'sg-0d07b8a25f5931664', 'SubnetId': 'subnet-09c53671781e352d5', 'MaxCount': 1, 'MinCount': 1, 'TagSpecification.1.ResourceType': 'instance', 'TagSpecification.1.Tag.1.Key': 'Name', 'TagSpecification.1.Tag.1.Value': 'VeeamTestVm', 'UserData': 'IyEvYmluL2Jhc2gKeXVtICB1cGRhdGUKeXVtIGluc3RhbGwgcHl0aG9uMy1waXAgcHl0aG9uMy1zZXR1cHRvb2xzIC15CnBpcCBpbnN0YWxsIGJvdG8zCmNkIC90bXAKd2dldCBodHRwczovL2dpdGh1Yi5jb20vYmFyZWxsYWcvc2NyaXB0cy9yYXcvbWFpbi9zcXN0ZXN0LnB5Cg==', 'IamInstanceProfile.Arn': 'arn:aws:iam::202854644357:instance-profile/barella-cross-instance-profile', 'KeyName': 'gbarella-2nd-cloud', 'ClientToken': '43000f83-ab3f-4cbd-b2de-dd05b5fa0fb0'}, 'url': 'https://ec2.us-east-1.amazonaws.com/', 'context': {'client_region': 'us-east-1', 'client_config': <botocore.config.Config object at 0x1082a2b90>, 'has_streaming_input': False, 'auth_type': None}}
+2024-02-26 14:12:58,397 DEBUG Event request-created.ec2.RunInstances: calling handler <bound method RequestSigner.handler of <botocore.signers.RequestSigner object at 0x1089eead0>>
+2024-02-26 14:12:58,397 DEBUG Event choose-signer.ec2.RunInstances: calling handler <function set_operation_specific_signer at 0x101a26b60>
+2024-02-26 14:12:58,397 DEBUG Calculating signature using v4 auth.
+2024-02-26 14:12:58,397 DEBUG CanonicalRequest:
+POST
+/
+
+content-type:application/x-www-form-urlencoded; charset=utf-8
+host:ec2.us-east-1.amazonaws.com
+x-amz-date:20240226T171258Z
+x-amz-security-token:IQoJb3JpZ2luX2VjENr//////////wEaCXVzLWVhc3QtMSJIMEYCIQDECi3fOmgvVew1FKuvn/vNpTt/P/n2oB5qt9pB+qtyzQIhAImBPC1b3T3gkrpL/kgLv8IAWdKa8vFT+NEgKvFkSdFaKs4CCML//////////wEQARoMMjAyODU0NjQ0MzU3IgyPsJYLQAWDxAjQm7MqogKvmOOKG91TDHg37D4kepCljrkAMgpE0jG/7INq8wGUh4v9j0UnpXPr+328ZGFsib/EK434Cq/ZW5shH8Up/0oLmamvn05SPtKNwLb6xEj4l+zxvq4v83MZzuVzV/J9EFxCrX40afWq0VSWBXL7yV5HUeTAFaYTgyhSvkLG/abwQrmaCOlVF9uEhZXMrHg8PI7yS6pU/W4DFknM2mvNQK9hBf59SZ+X5gAkEVePQGMYN2danqcDHphM5pJHej/7aXAc6qTWFvoETp+NU4P3VgjX9t0BTFSW/dNSnR22yOnx6MXcAxrRSO6/J2SYizcayCZJkHJMzmSmGKdlgKx6IkIF2jOY5xjKT5qHdxW9T5bEFHp3HqkBkfT+wxSV/iQI/O0czjD6jPOuBjqcAWzIBwWzkwRUGpHJLkyZt7abxWlDVg99UJhbg+Z4i+txI5Btu/R7PaWzDPCaSTp1tuy9jwaCT1iSDyj8Wp9gZs7zzbCnnE28FE7p6ixdaKBRsBBhTSE535GxZjLUnkQLlDZkR+l5DpDfEaq+T/STikIdGhkD5aUxUogFRYgmLE1T5byrmzZ7Mkj5u9+hMa8aG1DlNtb/jmi/JUi8Vw==
+
+content-type;host;x-amz-date;x-amz-security-token
+b358d54e9b1b0f02768d3c1ffc9325548fa5bd2a489157e4ff34d6b9fc3eb77e
+2024-02-26 14:12:58,397 DEBUG StringToSign:
+AWS4-HMAC-SHA256
+20240226T171258Z
+20240226/us-east-1/ec2/aws4_request
+86219a0bfed5108e17f2df33334c7d99c6dd4d42e066a2618d52bbe56f8857ec
+2024-02-26 14:12:58,397 DEBUG Signature:
+829a8c552d1291fc8d8cbbf2244ce4f5e417fd91a7d82dd4ff94fcfa09c5f0ca
+2024-02-26 14:12:58,398 DEBUG Event request-created.ec2.RunInstances: calling handler <function add_retry_headers at 0x101a58f40>
+2024-02-26 14:12:58,398 DEBUG Sending http request: <AWSPreparedRequest stream_output=False, method=POST, url=https://ec2.us-east-1.amazonaws.com/, headers={'Content-Type': b'application/x-www-form-urlencoded; charset=utf-8', 'User-Agent': b'Boto3/1.34.49 md/Botocore#1.34.49 ua/2.0 os/macos#23.3.0 md/arch#arm64 lang/python#3.11.6 md/pyimpl#CPython cfg/retry-mode#legacy Botocore/1.34.49 Resource', 'X-Amz-Date': b'20240226T171258Z', 'X-Amz-Security-Token': b'IQoJb3JpZ2luX2VjENr//////////wEaCXVzLWVhc3QtMSJIMEYCIQDECi3fOmgvVew1FKuvn/vNpTt/P/n2oB5qt9pB+qtyzQIhAImBPC1b3T3gkrpL/kgLv8IAWdKa8vFT+NEgKvFkSdFaKs4CCML//////////wEQARoMMjAyODU0NjQ0MzU3IgyPsJYLQAWDxAjQm7MqogKvmOOKG91TDHg37D4kepCljrkAMgpE0jG/7INq8wGUh4v9j0UnpXPr+328ZGFsib/EK434Cq/ZW5shH8Up/0oLmamvn05SPtKNwLb6xEj4l+zxvq4v83MZzuVzV/J9EFxCrX40afWq0VSWBXL7yV5HUeTAFaYTgyhSvkLG/abwQrmaCOlVF9uEhZXMrHg8PI7yS6pU/W4DFknM2mvNQK9hBf59SZ+X5gAkEVePQGMYN2danqcDHphM5pJHej/7aXAc6qTWFvoETp+NU4P3VgjX9t0BTFSW/dNSnR22yOnx6MXcAxrRSO6/J2SYizcayCZJkHJMzmSmGKdlgKx6IkIF2jOY5xjKT5qHdxW9T5bEFHp3HqkBkfT+wxSV/iQI/O0czjD6jPOuBjqcAWzIBwWzkwRUGpHJLkyZt7abxWlDVg99UJhbg+Z4i+txI5Btu/R7PaWzDPCaSTp1tuy9jwaCT1iSDyj8Wp9gZs7zzbCnnE28FE7p6ixdaKBRsBBhTSE535GxZjLUnkQLlDZkR+l5DpDfEaq+T/STikIdGhkD5aUxUogFRYgmLE1T5byrmzZ7Mkj5u9+hMa8aG1DlNtb/jmi/JUi8Vw==', 'Authorization': b'AWS4-HMAC-SHA256 Credential=ASIAS6OYUHKCXAXLLXMQ/20240226/us-east-1/ec2/aws4_request, SignedHeaders=content-type;host;x-amz-date;x-amz-security-token, Signature=829a8c552d1291fc8d8cbbf2244ce4f5e417fd91a7d82dd4ff94fcfa09c5f0ca', 'amz-sdk-invocation-id': b'8cb02c5f-8043-4d50-97be-cb1f76996863', 'amz-sdk-request': b'attempt=1', 'Content-Length': '889'}>
+2024-02-26 14:12:58,398 DEBUG Certificate path: /opt/homebrew/lib/python3.11/site-packages/botocore/cacert.pem
+2024-02-26 14:12:58,398 DEBUG Starting new HTTPS connection (1): ec2.us-east-1.amazonaws.com:443
+2024-02-26 14:13:00,178 DEBUG https://ec2.us-east-1.amazonaws.com:443 "POST / HTTP/1.1" 200 6028
+2024-02-26 14:13:00,178 DEBUG Response headers: {'x-amzn-RequestId': '397eef50-924a-4035-a79b-f53f0cf82a26', 'Cache-Control': 'no-cache, no-store', 'Strict-Transport-Security': 'max-age=31536000; includeSubDomains', 'vary': 'accept-encoding', 'Content-Type': 'text/xml;charset=UTF-8', 'Content-Length': '6028', 'Date': 'Mon, 26 Feb 2024 17:12:59 GMT', 'Server': 'AmazonEC2'}
+2024-02-26 14:13:00,179 DEBUG Response body:
+b'<?xml version="1.0" encoding="UTF-8"?>\n<RunInstancesResponse xmlns="http://ec2.amazonaws.com/doc/2016-11-15/">\n    <requestId>397eef50-924a-4035-a79b-f53f0cf82a26</requestId>\n    <reservationId>r-02501badd2fb4c651</reservationId>\n    <ownerId>202854644357</ownerId>\n    <groupSet/>\n    <instancesSet>\n        <item>\n            <instanceId>i-03b1cb275566f51ec</instanceId>\n            <imageId>ami-0440d3b780d96b29d</imageId>\n            <instanceState>\n                <code>0</code>\n                <name>pending</name>\n            </instanceState>\n            <privateDnsName>ip-10-10-0-55.ec2.internal</privateDnsName>\n            <dnsName></dnsName>\n            <reason></reason>\n            <keyName>gbarella-2nd-cloud</keyName>\n            <amiLaunchIndex>0</amiLaunchIndex>\n            <productCodes/>\n            <instanceType>t3.medium</instanceType>\n            <launchTime>2024-02-26T17:12:59.000Z</launchTime>\n            <placement>\n                <availabilityZone>us-east-1a</availabilityZone>\n                <groupName></groupName>\n                <tenancy>default</tenancy>\n            </placement>\n            <monitoring>\n                <state>disabled</state>\n            </monitoring>\n            <subnetId>subnet-09c53671781e352d5</subnetId>\n            <vpcId>vpc-0b35de8d2596b6ad6</vpcId>\n            <privateIpAddress>10.10.0.55</privateIpAddress>\n            <sourceDestCheck>true</sourceDestCheck>\n            <groupSet>\n                <item>\n                    <groupId>sg-0d07b8a25f5931664</groupId>\n                    <groupName>gbarella-SSH-https</groupName>\n                </item>\n            </groupSet>\n            <stateReason>\n                <code>pending</code>\n                <message>pending</message>\n            </stateReason>\n            <architecture>x86_64</architecture>\n            <rootDeviceType>ebs</rootDeviceType>\n            <rootDeviceName>/dev/xvda</rootDeviceName>\n            <blockDeviceMapping/>\n            <virtualizationType>hvm</virtualizationType>\n            <clientToken>43000f83-ab3f-4cbd-b2de-dd05b5fa0fb0</clientToken>\n            <tagSet>\n                <item>\n                    <key>Name</key>\n                    <value>VeeamTestVm</value>\n                </item>\n            </tagSet>\n            <hypervisor>xen</hypervisor>\n            <networkInterfaceSet>\n                <item>\n                    <networkInterfaceId>eni-086dabcbc832d658e</networkInterfaceId>\n                    <subnetId>subnet-09c53671781e352d5</subnetId>\n                    <vpcId>vpc-0b35de8d2596b6ad6</vpcId>\n                    <description></description>\n                    <ownerId>202854644357</ownerId>\n                    <status>in-use</status>\n                    <macAddress>02:aa:9e:ec:18:63</macAddress>\n                    <privateIpAddress>10.10.0.55</privateIpAddress>\n                    <privateDnsName>ip-10-10-0-55.ec2.internal</privateDnsName>\n                    <sourceDestCheck>true</sourceDestCheck>\n                    <groupSet>\n                        <item>\n                            <groupId>sg-0d07b8a25f5931664</groupId>\n                            <groupName>gbarella-SSH-https</groupName>\n                        </item>\n                    </groupSet>\n                    <attachment>\n                        <attachmentId>eni-attach-0773374a0cd6430e3</attachmentId>\n                        <deviceIndex>0</deviceIndex>\n                        <status>attaching</status>\n                        <attachTime>2024-02-26T17:12:59.000Z</attachTime>\n                        <deleteOnTermination>true</deleteOnTermination>\n                        <networkCardIndex>0</networkCardIndex>\n                    </attachment>\n                    <privateIpAddressesSet>\n                        <item>\n                            <privateIpAddress>10.10.0.55</privateIpAddress>\n                            <privateDnsName>ip-10-10-0-55.ec2.internal</privateDnsName>\n                            <primary>true</primary>\n                        </item>\n                    </privateIpAddressesSet>\n                    <ipv6AddressesSet/>\n                    <interfaceType>interface</interfaceType>\n                </item>\n            </networkInterfaceSet>\n            <iamInstanceProfile>\n                <arn>arn:aws:iam::202854644357:instance-profile/barella-cross-instance-profile</arn>\n                <id>AIPAS6OYUHKCRPGNZIZWP</id>\n            </iamInstanceProfile>\n            <ebsOptimized>false</ebsOptimized>\n            <enaSupport>true</enaSupport>\n            <cpuOptions>\n                <coreCount>1</coreCount>\n                <threadsPerCore>2</threadsPerCore>\n            </cpuOptions>\n            <capacityReservationSpecification>\n                <capacityReservationPreference>open</capacityReservationPreference>\n            </capacityReservationSpecification>\n            <enclaveOptions>\n                <enabled>false</enabled>\n            </enclaveOptions>\n            <metadataOptions>\n                <state>pending</state>\n                <httpTokens>required</httpTokens>\n                <httpPutResponseHopLimit>2</httpPutResponseHopLimit>\n                <httpEndpoint>enabled</httpEndpoint>\n                <httpProtocolIpv4>enabled</httpProtocolIpv4>\n                <httpProtocolIpv6>disabled</httpProtocolIpv6>\n                <instanceMetadataTags>disabled</instanceMetadataTags>\n            </metadataOptions>\n            <maintenanceOptions>\n                <autoRecovery>default</autoRecovery>\n            </maintenanceOptions>\n            <bootMode>uefi-preferred</bootMode>\n            <currentInstanceBootMode>uefi</currentInstanceBootMode>\n            <privateDnsNameOptions>\n                <hostnameType>ip-name</hostnameType>\n                <enableResourceNameDnsARecord>false</enableResourceNameDnsARecord>\n                <enableResourceNameDnsAAAARecord>false</enableResourceNameDnsAAAARecord>\n            </privateDnsNameOptions>\n        </item>\n    </instancesSet>\n</RunInstancesResponse>\n'
+2024-02-26 14:13:00,181 DEBUG Event needs-retry.ec2.RunInstances: calling handler <botocore.retryhandler.RetryHandler object at 0x107990250>
+2024-02-26 14:13:00,182 DEBUG No retry needed.
+2024-02-26 14:13:00,182 DEBUG Response: {'Groups': [], 'Instances': [{'AmiLaunchIndex': 0, 'ImageId': 'ami-0440d3b780d96b29d', 'InstanceId': 'i-03b1cb275566f51ec', 'InstanceType': 't3.medium', 'KeyName': 'gbarella-2nd-cloud', 'LaunchTime': datetime.datetime(2024, 2, 26, 17, 12, 59, tzinfo=tzutc()), 'Monitoring': {'State': 'disabled'}, 'Placement': {'AvailabilityZone': 'us-east-1a', 'GroupName': '', 'Tenancy': 'default'}, 'PrivateDnsName': 'ip-10-10-0-55.ec2.internal', 'PrivateIpAddress': '10.10.0.55', 'ProductCodes': [], 'PublicDnsName': '', 'State': {'Code': 0, 'Name': 'pending'}, 'StateTransitionReason': '', 'SubnetId': 'subnet-09c53671781e352d5', 'VpcId': 'vpc-0b35de8d2596b6ad6', 'Architecture': 'x86_64', 'BlockDeviceMappings': [], 'ClientToken': '43000f83-ab3f-4cbd-b2de-dd05b5fa0fb0', 'EbsOptimized': False, 'EnaSupport': True, 'Hypervisor': 'xen', 'IamInstanceProfile': {'Arn': 'arn:aws:iam::202854644357:instance-profile/barella-cross-instance-profile', 'Id': 'AIPAS6OYUHKCRPGNZIZWP'}, 'NetworkInterfaces': [{'Attachment': {'AttachTime': datetime.datetime(2024, 2, 26, 17, 12, 59, tzinfo=tzutc()), 'AttachmentId': 'eni-attach-0773374a0cd6430e3', 'DeleteOnTermination': True, 'DeviceIndex': 0, 'Status': 'attaching', 'NetworkCardIndex': 0}, 'Description': '', 'Groups': [{'GroupName': 'gbarella-SSH-https', 'GroupId': 'sg-0d07b8a25f5931664'}], 'Ipv6Addresses': [], 'MacAddress': '02:aa:9e:ec:18:63', 'NetworkInterfaceId': 'eni-086dabcbc832d658e', 'OwnerId': '202854644357', 'PrivateDnsName': 'ip-10-10-0-55.ec2.internal', 'PrivateIpAddress': '10.10.0.55', 'PrivateIpAddresses': [{'Primary': True, 'PrivateDnsName': 'ip-10-10-0-55.ec2.internal', 'PrivateIpAddress': '10.10.0.55'}], 'SourceDestCheck': True, 'Status': 'in-use', 'SubnetId': 'subnet-09c53671781e352d5', 'VpcId': 'vpc-0b35de8d2596b6ad6', 'InterfaceType': 'interface'}], 'RootDeviceName': '/dev/xvda', 'RootDeviceType': 'ebs', 'SecurityGroups': [{'GroupName': 'gbarella-SSH-https', 'GroupId': 'sg-0d07b8a25f5931664'}], 'SourceDestCheck': True, 'StateReason': {'Code': 'pending', 'Message': 'pending'}, 'Tags': [{'Key': 'Name', 'Value': 'VeeamTestVm'}], 'VirtualizationType': 'hvm', 'CpuOptions': {'CoreCount': 1, 'ThreadsPerCore': 2}, 'CapacityReservationSpecification': {'CapacityReservationPreference': 'open'}, 'MetadataOptions': {'State': 'pending', 'HttpTokens': 'required', 'HttpPutResponseHopLimit': 2, 'HttpEndpoint': 'enabled', 'HttpProtocolIpv6': 'disabled', 'InstanceMetadataTags': 'disabled'}, 'EnclaveOptions': {'Enabled': False}, 'BootMode': 'uefi-preferred', 'PrivateDnsNameOptions': {'HostnameType': 'ip-name', 'EnableResourceNameDnsARecord': False, 'EnableResourceNameDnsAAAARecord': False}, 'MaintenanceOptions': {'AutoRecovery': 'default'}, 'CurrentInstanceBootMode': 'uefi'}], 'OwnerId': '202854644357', 'ReservationId': 'r-02501badd2fb4c651', 'ResponseMetadata': {'RequestId': '397eef50-924a-4035-a79b-f53f0cf82a26', 'HTTPStatusCode': 200, 'HTTPHeaders': {'x-amzn-requestid': '397eef50-924a-4035-a79b-f53f0cf82a26', 'cache-control': 'no-cache, no-store', 'strict-transport-security': 'max-age=31536000; includeSubDomains', 'vary': 'accept-encoding', 'content-type': 'text/xml;charset=UTF-8', 'content-length': '6028', 'date': 'Mon, 26 Feb 2024 17:12:59 GMT', 'server': 'AmazonEC2'}, 'RetryAttempts': 0}}
+2024-02-26 14:13:00,182 DEBUG Loading ec2:Instance
+2024-02-26 14:13:00,182 DEBUG Renaming Instance attribute network_interfaces
+2024-02-26 14:13:00,184 DEBUG Event creating-resource-class.ec2.Instance: calling handler <function lazy_call.<locals>._handler at 0x101b06fc0>

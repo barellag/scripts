@@ -17,8 +17,8 @@
 #   Executes the script and will prompt to the user to type the role ARN and the QUEUE name to be created
 
 #NOTES
-#    NAME: VeeamSupportSQSTest.py
-#    VERSION: 1.0
+#    NAME: sqstest.py
+#    VERSION: 1.1
 #    AUTHOR: Gabriel Barella
 
 #TROUBLESHOTING STEPS
@@ -41,7 +41,7 @@ logging.basicConfig(
 logging.info("Script Started")
 
 #get the role to be assumed, usually the role from the account with access to the resources to be backed up
-roleArn = input("Paste Your Backup Role Arn: ")
+roleArn = input("Enter Your Backup Role ARN: ")
 #type any name here, this is just to identify the session when we are assuming the role
 sessionName = f"VeeamSupportSQSTest-{uuid.uuid4()}"
 
@@ -112,6 +112,7 @@ while True:
         secret_access_key = None
         session_token = None
         print("Credentials removed")
+        print("Keep in mind you will need to terminate this test instance manually!!!")
         break
 
     if toDelete.lower()=="n":
