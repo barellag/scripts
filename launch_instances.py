@@ -18,6 +18,8 @@ logging.info("Script Started")
 roleArn = input("Enter Your Backup Role ARN: ")
 #type any name here, this is just to identify the session when we are assuming the role
 sessionName = f"VeeamSupportSQSTest-{uuid.uuid4()}"
+#Get region name
+regionId = input("Enter region name (example: us-east-1): ")
 
 #start session with assumed role
 session = boto3.Session()
@@ -51,18 +53,19 @@ assumed_session = boto3.Session(
 )
 
 #getting newest AMI for the test instance
-ssmClient=boto3.client('ssm')
+ssmClient=boto3.client('ssm', region_name=regionId)
 amiName='/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-6.1-x86_64'
 amiResponse=ssmClient.get_parameter(Name=amiName, WithDecryption=False)
 latestAmiId=amiResponse['Parameter']['Value']
+print("The following AMI will be used for this region: "+latestAmiId)
 
-#launching a new test instance
+#launching a new test instancesubnet-09c53671781e352d5
 tempVmName = input('Enter a name for the test VM: ')
-regionId = input("Enter region name (example: us-east-1): ")
+#regionId = input("Enter region name (example: us-east-1): ") it is already requested above
 instanceProfile = input("Enter the instance profile NAME used by the worker: ")
 subnetId = str(input('Enter subnet ID: '))
 securityGroup = input('Enter Security Group ID: ')
-sshKey = input('Enter SSH key name: ')
+#sshKey = input('Enter SSH key name: ')
 ec2Client = assumed_session.resource('ec2', region_name=regionId)
 newInstance = ec2Client.create_instances(
     BlockDeviceMappings=[
@@ -105,3 +108,4 @@ wget https://github.com/barellag/scripts/raw/main/sqstest.py
 
 newInstanceId = newInstance[0].id
 print('Temporary instance ID: '+newInstanceId)
+
