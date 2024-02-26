@@ -3,6 +3,19 @@ import boto3
 import logging
 import time
 import uuid
+import importlib
+import subprocess
+
+#checking for boto3 and installing if missing
+def import_and_install_module(module_name):
+    try:
+        importlib.import_module(module_name)
+    except ImportError:
+        print(f"The module {module_name} is missing. Installing it now...")
+        subprocess.call(['pip', 'install', module_name])
+ 
+required_module = "boto3"
+import_and_install_module(required_module)
 
 #configure logging
 logging.basicConfig(
@@ -23,7 +36,7 @@ regionId = input("Enter region name (example: us-east-1): ")
 
 #start session with assumed role
 session = boto3.Session()
-sts = session.client("sts")
+sts = session.client("sts", region_name=regionId)
 response = sts.assume_role(
     RoleArn=roleArn,
     RoleSessionName=sessionName,
