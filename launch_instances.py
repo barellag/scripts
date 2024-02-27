@@ -146,8 +146,5 @@ logging.info("Security Group ID: " + securityGroup)
 logging.info("Subnet ID: " + subnetId)
 logging.info("Instance Profile: " + instanceProfile)
 
-newInstanceId = newInstance[0].id
-print('Temporary instance ID: '+newInstanceId)
-
 # Show where the log is printed
 logging.info("Log file is located at: VeeamSupportSQSTest.log")
