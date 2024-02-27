@@ -10,7 +10,7 @@ def import_and_install_module(module_name):
         subprocess.call(['pip', 'install', module_name])
 
 #modules array that are required
-required_modules = ["boto3", "awscli", "logging", "time", "uuid"]
+required_modules = ["boto3", "awscli", "logging", "time", "shortuuid"]
 
 #check and install the required modules
 for module in required_modules:
@@ -20,7 +20,7 @@ for module in required_modules:
 import boto3
 import logging
 import time
-import uuid
+import shortuuid
 import os
 
 #configure logging
@@ -46,7 +46,7 @@ def check_aws_credentials():
 #get the role to be assumed, usually the role from the account with access to the resources to be backed up
 roleArn = input("Enter Your Backup Role ARN: ")
 #type any name here, this is just to identify the session when we are assuming the role
-sessionName = f"VeeamSupportSQSTest-{uuid.uuid4()}"
+sessionName = f"VeeamSupportSQSTest-{shortuuid.uuid()}"
 #Get region name
 regionId = input("Enter region name (example: us-east-1): ")
 
@@ -88,13 +88,29 @@ amiResponse=ssmClient.get_parameter(Name=amiName, WithDecryption=False)
 latestAmiId=amiResponse['Parameter']['Value']
 print("The following AMI will be used for this region: "+latestAmiId)
 
+
+#creating a new keyPair
+ec2Client = assumed_session.client('ec2', region_name=regionId)
+keyName=f"VeeamSupportKey-{shortuuid.uuid()}"
+newKeyPair = ec2Client.create_key_pair(KeyName=keyName)
+newPrivateKey = f'{keyName}.pem'
+with open(newPrivateKey, 'w') as pk_file:
+    pk_file.write(newKeyPair['KeyMaterial'])
+print("New keypair created. the PEM file has been downloaded to the folder where this script is being executed from. Key Name: "+newPrivateKey)
+#change permissions for pem file
+os.chmod(newPrivateKey, 0o400)
+print('Setting read-only permissions to PEM file')
+time.sleep(0.5)
+print('Read-only permissions set')
+
 #launching a new test instancesubnet-09c53671781e352d5
 tempVmName = input('Enter a name for the test VM: ')
 #regionId = input("Enter region name (example: us-east-1): ") it is already requested above
 instanceProfile = input("Enter the instance profile NAME used by the worker: ")
 subnetId = str(input('Enter subnet ID: '))
 securityGroup = input('Enter Security Group ID: ')
-#sshKey = input('Enter SSH key name: ')
+
+
 ec2Client = assumed_session.resource('ec2', region_name=regionId)
 newInstance = ec2Client.create_instances(
     BlockDeviceMappings=[
@@ -132,7 +148,7 @@ cd /tmp
 wget https://github.com/barellag/scripts/raw/main/sqstest.py
 ''',
     IamInstanceProfile = {'Name': instanceProfile},
-#    KeyName = sshKey
+    KeyName = keyName #key generated from 
 )
 
 newInstanceId = newInstance[0].id
@@ -145,6 +161,7 @@ logging.info("Instance Type: t3.medium")
 logging.info("Security Group ID: " + securityGroup)
 logging.info("Subnet ID: " + subnetId)
 logging.info("Instance Profile: " + instanceProfile)
+logging.info("SSH Key: " + newPrivateKey)
 
 # Show where the log is printed
 logging.info("Log file is located at: VeeamSupportSQSTest.log")
