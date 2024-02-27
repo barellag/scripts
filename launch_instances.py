@@ -151,8 +151,24 @@ wget https://github.com/barellag/scripts/raw/main/sqstest.py
     KeyName = keyName #key generated from 
 )
 
+print('Gathering new instance details...')
+time.sleep(3)
+newInstance[0].reload()
 newInstanceId = newInstance[0].id
 print('Temporary instance ID: '+newInstanceId)
+print('Getting Private IP...')
+time.sleep(3)
+newInstancePrivIp = newInstance[0].private_ip_address
+time.sleep(3)
+print('Temporary instance Private IP: '+newInstancePrivIp)
+print('Getting Public IP...')
+time.sleep(3)
+newInstancePubIp = newInstance[0].public_ip_address
+if newInstancePubIp is None:
+    print('Public IP not present')
+else:
+    print('Temporary instance Public IP: '+newInstancePubIp)
+    
 
 #logging information summary
 logging.info("Creating a new EC2 instance with the following configuration:")
