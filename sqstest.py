@@ -75,8 +75,8 @@ assumed_session = boto3.Session(
 #creating a new SQS queue
 print("Let's test the SQS communication, first we will create a SQS queue")
 queueName=input("Type any queue name to be created: ")
-#regionId = input("Enter region name (example: us-east-1): ") This will use the same region as the VM, since the VM is also being deployed via script
-sqsClient = assumed_session.client("sqs")
+regionId = input("Enter region name (example: us-east-1): ") This will use the same region as the VM, since the VM is also being deployed via script
+sqsClient = assumed_session.client("sqs",region_name=regionId)
 sqsCreateQueues = sqsClient.create_queue(
     QueueName=queueName,
 )
