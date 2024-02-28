@@ -109,7 +109,7 @@ print('Read-only permissions set')
 #launching a new test instancesubnet-09c53671781e352d5
 tempVmName = input('Enter a name for the test VM: ')
 #regionId = input("Enter region name (example: us-east-1): ") it is already requested above
-instanceProfile = input("Enter the instance profile NAME used by the worker: ")
+instanceProfile = input("Enter the instance profile ARN used by the worker: ")
 subnetId = str(input('Enter subnet ID: '))
 securityGroup = input('Enter Security Group ID: ')
 
@@ -150,7 +150,7 @@ pip install boto3
 cd /tmp
 wget https://github.com/barellag/scripts/raw/main/sqstest.py
 ''',
-    IamInstanceProfile = {'Name': instanceProfile},
+    IamInstanceProfile = {'Arn': instanceProfile},
     KeyName = keyName #key generated from 
 )
 
