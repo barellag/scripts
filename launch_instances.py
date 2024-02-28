@@ -43,6 +43,9 @@ def check_aws_credentials():
         os.environ['AWS_SECRET_ACCESS_KEY'] = secret_key
         print("AWS credentials have been set.")
 
+#invoke function
+check_aws_credentials()
+
 #get the role to be assumed, usually the role from the account with access to the resources to be backed up
 roleArn = input("Enter Your Backup Role ARN: ")
 #type any name here, this is just to identify the session when we are assuming the role
