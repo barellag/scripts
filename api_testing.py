@@ -109,8 +109,30 @@ response = requests.post(url, json=payload, headers=headers, verify=False)
 data = response.json()
 amazonConnectionId = data["id"]
 
-#Scan AWS regions
+#Scan AZs
+amazon_connection_id = amazonConnectionId
+url = apiUrl + "amazonConnections/" + amazon_connection_id + "/availabilityZones"
 
+headers = {
+  "x-api-version": "1.5-rev0",
+  "Authorization": accessToken
+}
+
+response = requests.get(url, headers=headers, verify=False)
+
+data = response.json()
+
+#Scan AWS regions
+url = apiUrl+"cloudInfrastructure/regions/" + regionId
+
+headers = {
+  "x-api-version": "1.5-rev0",
+  "Authorization": accessToken
+}
+
+response = requests.get(url, headers=headers, verify=False)
+
+data = response.json()
 
 #get AZs for a region
 whichAz = input("Enter the AZ you want to use (a, b, c, etc): ")
@@ -130,6 +152,7 @@ headers = {
 response = requests.get(url, headers=headers, params=query, verify=False)
 
 data = response.json()
+print(data)
 azId = data["results"][0]["id"]
 
 #workers in prod
