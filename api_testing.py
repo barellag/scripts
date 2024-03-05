@@ -18,6 +18,10 @@ for module in required_modules:
 
 import requests
 import maskpass
+import urllib3
+
+#Disable_Warnings
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 #getting appliance's credentials
 veeamUserName = input("Enter username: ")
