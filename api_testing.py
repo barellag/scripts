@@ -152,7 +152,6 @@ headers = {
 response = requests.get(url, headers=headers, params=query, verify=False)
 
 data = response.json()
-print(data)
 azId = data["results"][0]["id"]
 
 #workers in prod
