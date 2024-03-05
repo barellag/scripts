@@ -28,8 +28,8 @@ veeamUserName = input("Enter username: ")
 VeeamUserPwd = maskpass.askpass(prompt="Enter your password: ", mask="*")
 
 #getting appliance's IP and API port
-veeamBackupAWSServer = 127.0.0.1 #input("Enter hostname or ip: ")
-veeamBackupAWSPort = 11005 #input("Enter API port: ")
+veeamBackupAWSServer = "127.0.0.1" #input("Enter hostname or ip: ")
+veeamBackupAWSPort = "11005" #input("Enter API port: ")
 apiVersion = "1.5-rev0"
 apiUrl = "https://"+veeamBackupAWSServer+":"+veeamBackupAWSPort+"/"+"api/v1/"
 
