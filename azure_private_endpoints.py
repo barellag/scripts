@@ -1,4 +1,7 @@
 #first import modules to check if the needed modules are installed, if needed install them with pip install module_name
+#example
+#pip install azure-mgmt-resource azure-identity
+
 import subprocess
 from azure.mgmt.resource import ResourceManagementClient
 from azure.identity import DefaultAzureCredential
