@@ -1,5 +1,6 @@
 import requests
 import getpass
+import time
 import urllib3
 import json
 from urllib3.exceptions import InsecureRequestWarning
@@ -39,11 +40,24 @@ else:
     print("Status Code:", response.status_code)
     print("Response:", response.text)
 
-#Get workers network config:
+#Get workers network config in general:
 url = appliance+"/api/v7/workers/networkConfiguration"
 
+headers = {"Authorization": "bearer " + token}
+
+response = requests.get(url, headers=headers, verify=False)
+
+data = response.json()
+print("Getting Worker regions...")
+time.sleep(1)
+print(json.dumps(data, indent=4))
+
+
+#Get workers network config for specific region:
+url = appliance+"/api/v7/workers/networkConfiguration"
+regionId = input("Enter region ID (Example: eastus): ")
 query = {
-  "RegionId": "eastus",
+  "RegionId": regionId,
   "Offset": "0",
   "Limit": "-1"
 }
@@ -53,4 +67,6 @@ headers = {"Authorization": "bearer " + token}
 response = requests.get(url, headers=headers, params=query, verify=False)
 
 data = response.json()
+print("Getting specific worker region...")
+time.sleep(1)
 print(json.dumps(data, indent=4))
