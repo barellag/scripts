@@ -60,14 +60,14 @@ headers = {
   "Authorization": "bearer " + token
 }
 
-response = requests.put(url, json=payload, headers=headers)
+response = requests.put(url, json=payload, headers=headers, verify=False)
 
-if (response.status == 204) {
+if (response.status_code == 204):
   print("success")
-} else {
+else:
   data = response.json()
   print(data)
-}
+
 
 
 #Get workers network config in general:
