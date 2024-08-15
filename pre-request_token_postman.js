@@ -1,5 +1,5 @@
 //Setting creds
-var url_appliance = 'https://44.219.132.69:11020/api/v1/token';
+var url_appliance = pm.collectionVariables.get("vbawsappliance")+'token';
 var username = pm.globals.get("appliance_user");
 var password = pm.globals.get("appliances_pwd");
 
