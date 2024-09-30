@@ -81,4 +81,5 @@ response = client.create_backup(
     FileSystemId=fsxId
 )
 
+print("FSx Backup requested")
 logging.info("Test finished")
