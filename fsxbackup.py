@@ -74,7 +74,8 @@ assumed_session = boto3.Session(
 fsxId = input("Enter Your File System ID: ")
 
 #Creating FSx client
-client = boto3.client('fsx')
+client = assumed_session.client('fsx')
+
 #Create FSx Backup
 response = client.create_backup(
     FileSystemId=fsxId
