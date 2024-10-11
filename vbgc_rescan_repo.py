@@ -56,7 +56,7 @@ data = response.json()
 #print(data)
 #save session to variable
 session_id = data['sessionIds'][0]
-print(session_id)
+#print(session_id)
 
 #get session results
 url = appliance+"/api/v1/sessions/" + session_id
