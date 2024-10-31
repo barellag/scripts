@@ -38,13 +38,13 @@ az_login()
 #setting variables
 credential = DefaultAzureCredential()
 subscription_id = input("Enter Subscription ID: ")
-resourceGroup =  input("Enter VBAz resource group name: ")
-VBAzTagValue = input("enter the value of Veeam backup appliance ID tag: ") #Check the ID of the tag from resources created by appliance
+resourceGroup =  input("Enter Private Link Resource Group name: ")
+VBAzTagValue = input("Enter the value of Veeam backup appliance ID tag: ") #Check the ID of the tag from resources created by appliance
 VBAzTag = "Veeam backup appliance ID : "+VBAzTagValue
 blobDnsZone = "privatelink.blob.core.windows.net"
 queueDnsZone = "privatelink.queue.core.windows.net"
 resource_client = ResourceManagementClient(credential, subscription_id)
-vnet_names = input("Enter VNet name: ")
+vnet_names = input("Enter VNET where your endpoints are: ")
 
 # Filters resources by tag
 vb_az_tag_filter = "tagName eq 'Veeam backup appliance ID' and tagValue eq '" + VBAzTagValue + "'"
