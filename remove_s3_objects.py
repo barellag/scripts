@@ -1,3 +1,21 @@
+import importlib
+import subprocess
+
+def import_and_install_module(module_name):
+    try:
+        importlib.import_module(module_name)
+    except ImportError:
+        print(f"The module {module_name} is missing. Installing it now...")
+        subprocess.call(['./python3', '-m', 'pip', 'install', module_name])
+
+#modules array that are required
+required_modules = ["boto3","time","logging"]
+
+#check and install the required modules
+for module in required_modules:
+    import_and_install_module(module)
+
+
 import boto3
 import logging
 import time
@@ -46,7 +64,7 @@ assumed_session = boto3.Session(
 )
 
 bucket = "" #Enter bucket name
-prefix = "testing_folder_to_delete/subfolder1/subfolder2" #Enter the path, replacing the example I left
+prefix = "testing_folder_to_delete/subfolder1/" #Enter the path, replacing the example I left
 s3_client = assumed_session.client('s3')
 object_response_paginator = s3_client.get_paginator('list_object_versions')
 
