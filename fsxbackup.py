@@ -42,6 +42,7 @@ logging.info("Script Started")
 roleArn = input("Enter Your Backup Role ARN: ")
 #type any name here, this is just to identify the session when we are assuming the role
 sessionName = f"VeeamSupportFSxTest-{uuid.uuid4()}"
+externalId = input("Enter the external ID: ")
 
 #start session with assumed role
 session = boto3.Session()
@@ -49,7 +50,8 @@ sts = session.client("sts")
 response = sts.assume_role(
     RoleArn=roleArn,
     RoleSessionName=sessionName,
-    DurationSeconds=900
+    DurationSeconds=900,
+    ExternalId=externalId
 )
 print("Assuming role...")
 time.sleep(0.5)
