@@ -1,11 +1,11 @@
 # Define variables
-storageAccountName="barellasa2"
-resourceGroupName="barella-2nd-sub-RG"
-containerName="vbazbackups"
-basePath="Veeam/Backup/daily-test/Clients/{83c15758-8a81-49d8-b2d1-5f08110e0bd0}"
+storageAccountName="Enter SA name"
+resourceGroupName="ENTER_RG_NAME_HERE"
+containerName="Enter Container Name"
+basePath="Veeam/Backup/backup/Clients/{83c15758-8a81-49d8-b2d1-5f08110e0bd0}"
 
 # Start AZ session
-#az login
+az login
 
 # Obtain account key
 accountKey=$(az storage account keys list -g $resourceGroupName -n $storageAccountName --query "[0].value" -o tsv)
