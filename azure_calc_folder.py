@@ -38,12 +38,6 @@ for blob in container_client.list_blobs(name_starts_with=prefix):
     if first_folder:
         folder_sizes[first_folder] += blob.size
 
-'''
-# Display the results
-for folder, size in folder_sizes.items():
-    size_in_mb = round(size / (1024 * 1024), 2)  # Convert bytes to MB
-    print(f"{folder}: {size_in_mb} MB")
-'''
     # Define the path for the output file
 output_file_path = "folder_sizes.txt"
 
