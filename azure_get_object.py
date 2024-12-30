@@ -21,7 +21,7 @@ from azure.storage.blob import BlobServiceClient
 # Replace with your actual connection string
 connection_string = "" #enter the connection string from storage account
 container_name = "" #enter the container name
-blob_name = "/Veeam/Backup/Veeam/Clients/{83c15758-8a81-49d8-b2d1-5f08110e0bd0}/464f4bc2-58c3-4287-b065-3b9f6ba22eff/CloudStg/Meta/Blocks/Sets/01ad7b8114075a379ba5f0af47d60db9[0;499999].{c7ed2eb0-4ffc-45e8-8424-fc82b5e4f808}"
+blob_name = ""
 
 blob_service_client = BlobServiceClient.from_connection_string(connection_string)
 container_client = blob_service_client.get_container_client(container_name)
