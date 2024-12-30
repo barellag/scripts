@@ -1,8 +1,6 @@
 
 import importlib
 import subprocess
-from azure.storage.blob import BlobServiceClient
-from collections import defaultdict
 
 def import_and_install_module(module_name):
     try:
@@ -17,6 +15,10 @@ required_modules = ["collections", "azure.storage.blob"]
 # check and install the required modules
 for module in required_modules:
     import_and_install_module(module)
+
+from azure.storage.blob import BlobServiceClient
+from collections import defaultdict
+
 
 # Initialize the connection parameters
 connection_string = ""  # Replace with your connection string
