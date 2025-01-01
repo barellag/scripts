@@ -33,15 +33,21 @@ logging.basicConfig(
 )
 
 # Create a custom transport with a larger connection pool
-http_transport = RequestsTransport(connection_pool_maxsize=20)  # Example pool size
+http_transport = RequestsTransport(connection_pool_maxsize=20)
 
 
 # Replace with your actual connection string
 connection_string = ""
 container_name = ""
-blob_name = ""
+blob_names = [
+    
+]
 
-blob_service_client = BlobServiceClient.from_connection_string(connection_string)
+blob_service_client = BlobServiceClient.from_connection_string(
+    connection_string,
+    transport=http_transport
+)
+
 container_client = blob_service_client.get_container_client(container_name)
 
 
@@ -66,19 +72,23 @@ def download_blob(blob_name):
         logging.error(f"Error downloading blob {blob_name}: {e}")
         return None
     
-
-# Simulate parallel requests
-def simulate_parallel_load(blob_name, num_requests):
+# Simulate parallel requests for multiple blobs, each requested multiple times
+def simulate_parallel_load(blob_names, num_requests_per_blob):
     with ThreadPoolExecutor(max_workers=100) as executor:
-        futures = {executor.submit(download_blob, blob_name): i for i in range(num_requests)}
+        futures = {
+            executor.submit(download_blob, blob_name): (blob_name, request_id)
+            for blob_name in blob_names
+            for request_id in range(num_requests_per_blob)
+        }
         
         for future in as_completed(futures):
-            request_id = futures[future]
+            blob_name, request_id = futures[future]
             try:
                 result = future.result()
-                logging.info(f"Request {request_id + 1} completed with blob size: {result} bytes")
+                if result is not None:
+                    logging.info(f"Request {request_id+1} for blob '{blob_name}' downloaded successfully with size: {result} bytes")
             except Exception as e:
-                logging.info(f"Request {request_id + 1} generated an exception: {e}")
+                logging.error(f"Request {request_id+1} for blob '{blob_name}' generated an exception: {e}")
 
-simulate_parallel_load(blob_name, 100)
-
+# Example usage: request each blob 10 times
+simulate_parallel_load(blob_names, 100)
