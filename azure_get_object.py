@@ -19,6 +19,7 @@ import time
 from azure.storage.blob import BlobServiceClient
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import logging
+from azure.core.pipeline.transport import RequestsTransport
 
 
 # Logging configuration
@@ -31,6 +32,8 @@ logging.basicConfig(
     ]
 )
 
+# Create a custom transport with a larger connection pool
+http_transport = RequestsTransport(connection_pool_maxsize=20)  # Example pool size
 
 
 # Replace with your actual connection string
