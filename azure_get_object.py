@@ -9,7 +9,7 @@ def import_and_install_module(module_name):
         subprocess.call(['python3', '-m', 'pip', 'install', module_name])
 
 #modules array that are required
-required_modules = ["azure.storage.blob"]
+required_modules = ["azure.storage.blob","concurrent.futures"]
 
 #check and install the required modules
 for module in required_modules:
@@ -17,10 +17,25 @@ for module in required_modules:
 
 import time
 from azure.storage.blob import BlobServiceClient
+from concurrent.futures import ThreadPoolExecutor, as_completed
+import logging
+
+
+# Logging configuration
+logging.basicConfig(
+    level=logging.INFO,  # Set the logging level
+    format='%(asctime)s - %(levelname)s - %(message)s',  # Log format
+    handlers=[
+        logging.FileHandler("blob_download.log"),  # Log to this file
+        logging.StreamHandler()  # Also print to console
+    ]
+)
+
+
 
 # Replace with your actual connection string
-connection_string = "" #enter the connection string from storage account
-container_name = "" #enter the container name
+connection_string = ""
+container_name = ""
 blob_name = ""
 
 blob_service_client = BlobServiceClient.from_connection_string(connection_string)
@@ -38,24 +53,29 @@ def download_blob(blob_name):
         if immutability_policy:
             expiration_date = immutability_policy.get('expiry_time')
             policy_mode = immutability_policy.get('policy_mode', 'N/A')
-            print("Immutability Policy:")
-            print(f"  Expiry Time: {expiration_date}")
-            print(f"  Policy Mode: {policy_mode}")
+            logging.info("Immutability Policy:")
+            logging.info(f"  Expiry Time: {expiration_date}")
+            logging.info(f"  Policy Mode: {policy_mode}")
         else:
-            print("No immutability policy set.")
-        return blob_data
+            logging.info("No immutability policy set.")
+        return len(blob_data)  # Ensure returning the size, not the content
     except Exception as e:
-        print(f"Error downloading blob {blob_name}: {e}")
+        logging.error(f"Error downloading blob {blob_name}: {e}")
         return None
+    
 
+# Simulate parallel requests
+def simulate_parallel_load(blob_name, num_requests):
+    with ThreadPoolExecutor(max_workers=100) as executor:
+        futures = {executor.submit(download_blob, blob_name): i for i in range(num_requests)}
+        
+        for future in as_completed(futures):
+            request_id = futures[future]
+            try:
+                result = future.result()
+                logging.info(f"Request {request_id + 1} completed with blob size: {result} bytes")
+            except Exception as e:
+                logging.info(f"Request {request_id + 1} generated an exception: {e}")
 
-# Simulate multiple requests
-def simulate_load(blob_name, num_requests):
-    for i in range(num_requests):
-        print(f"Request {i+1}")
-        data = download_blob(blob_name)
-        if data is not None:
-            print(f"Downloaded blob size: {len(data)} bytes")
-        time.sleep(0.0)  # Add a delay to mimic a more real-world scenario
+simulate_parallel_load(blob_name, 100)
 
-simulate_load(blob_name, 100)
