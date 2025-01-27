@@ -4,7 +4,7 @@
 # I would recommend you to create a variable env for python with python3 -m venv /tmp/virtual
 # Set the virtual as your default python for that session with "source /tmp/virtual/bin/activate"
 
-
+#Run the script with python3 /path/to/the/script.py
 
 import importlib
 import subprocess
