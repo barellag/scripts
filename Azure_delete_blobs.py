@@ -1,3 +1,11 @@
+#This script will help removing the blobs from the storage account
+#Make sure you add the variables accordingly.
+
+# I would recommend you to create a variable env for python with python3 -m venv /tmp/virtual
+# Set the virtual as your default python for that session with "source /tmp/virtual/bin/activate"
+
+
+
 import importlib
 import subprocess
 
