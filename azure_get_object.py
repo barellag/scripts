@@ -1,12 +1,12 @@
 import importlib
 import subprocess
 
-def import_and_install_module(module_name):
+def import_and_install_module(module):
     try:
-        importlib.import_module(module_name)
+        importlib.import_module(module)
     except ImportError:
-        print(f"The module {module_name} is missing. Installing it now...")
-        subprocess.call(['python3', '-m', 'pip', 'install', module_name])
+        print(f"The module {module} is missing. Installing it now...")
+        subprocess.call(['python3', '-m', 'pip', 'install', module])
 
 #modules array that are required
 required_modules = ["azure.storage.blob","concurrent.futures"]

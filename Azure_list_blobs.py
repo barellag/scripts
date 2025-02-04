@@ -6,7 +6,7 @@ from datetime import datetime, timedelta
 # Set environment variables for DefaultAzureCredential
 tenant_id = 'ba07baab-431b-49ed-add7-cbc3542f5140'
 client_id = 'e18bcf9c-67ed-4d26-9d4d-86b2535a26dd'
-
+client_secret = ''
 
 credential = ClientSecretCredential(
     tenant_id=tenant_id,

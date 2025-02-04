@@ -27,18 +27,58 @@ while not authenticated:
         "rememberMe": "true"
     }
 
+    
     headers = {
         "x-api-version": "1.0-rev4",
     }
 
+    # First step: submit credentials
     response = requests.post(private_token_url, data=payload, headers=headers, verify=False)
 
-    # Check response status to determine if authentication is successful
-    if response.status_code == 200:
+    if response.status_code == 202:
+        print("MFA Authentication started...")
+        # Check if MFA is required by the API response
+        token_info = response.json()
+        if token_info.get('description') == 'mfa required':
+            # Extract MFA token if provided as part of challenge
+            mfa_token = token_info.get('mfa_token', '')
+
+            # Prompt user for MFA code
+            mfa_code = input("Enter your MFA code: ")
+
+            # Prepare payload for MFA submission
+            mfa_payload = {
+                "grant_type": "mfa",
+                "mfa_token": mfa_token,
+                "mfa_code": mfa_code
+            }
+
+            # Submit MFA details
+            mfa_response = requests.post(private_token_url, data=mfa_payload, headers=headers, verify=False)
+
+            if mfa_response.status_code == 200:
+                # MFA auth successful, retrieve final token
+                final_token_info = mfa_response.json()
+                token = final_token_info.get('access_token')
+                print("Authenticated successfully with MFA!")
+                authenticated = True
+            else:
+                print("Failed MFA authentication. Please try again.")
+                print("Status Code:", mfa_response.status_code)
+                print("Response:", mfa_response.text)
+        
+        else:
+            print("Authenticated successfully!")
+            token = token_info.get('access_token')
+            authenticated = True
+
+    elif response.status_code == 200:
         print("Token retrieved successfully!")
         token_info = response.json()  # Parse JSON response
         token = token_info.get('access_token')  # Retrieve the token
         authenticated = True  # Set the flag to exit the loop
+
+
     else:
         print("Failed to retrieve token. Please check your credentials and try again.")
         print("Status Code:", response.status_code)
