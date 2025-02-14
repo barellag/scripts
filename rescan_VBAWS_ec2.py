@@ -52,6 +52,34 @@ headers_token = {
 
 response = requests.post(url, headers=headers_token, verify=False)
 
-data = response.json
-print(data)
-#print(json.dumps(data, indent=4))
+if response.status_code == 202:
+    data = response.json()
+    session_id = data.get("sessionId")
+    print("Rescan initiated. Session ID:", session_id)
+
+    # Check session status
+    session_url = appliance + "/api/v1/sessions/" + session_id
+
+    while True:
+        response = requests.get(session_url, headers=headers_token, verify=False)
+        if response.status_code == 200:
+            data = response.json()
+            status = data.get("status")
+
+            if status == "Succeeded":
+                print("Rescan completed successfully.")
+                print(json.dumps(data, indent=4))
+                break
+            else:
+                print("Rescan in progress, current status:", status)
+            
+            time.sleep(5)  # Wait before checking again
+        else:
+            print("Failed to check session status.")
+            print("Status Code:", response.status_code)
+            print("Response:", response.text)
+            break
+else:
+    print("Failed to initiate rescan.")
+    print("Status Code:", response.status_code)
+    print("Response:", response.text)
