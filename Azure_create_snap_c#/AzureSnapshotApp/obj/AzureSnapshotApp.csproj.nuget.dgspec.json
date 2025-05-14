@@ -1,0 +1,102 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/gabriel.barella/Library/CloudStorage/OneDrive-VeeamSoftwareCorporation/Documents/Scripts/scripts/Azure_create_snap_c#/AzureSnapshotApp/AzureSnapshotApp.csproj": {}
+  },
+  "projects": {
+    "/Users/gabriel.barella/Library/CloudStorage/OneDrive-VeeamSoftwareCorporation/Documents/Scripts/scripts/Azure_create_snap_c#/AzureSnapshotApp/AzureSnapshotApp.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/gabriel.barella/Library/CloudStorage/OneDrive-VeeamSoftwareCorporation/Documents/Scripts/scripts/Azure_create_snap_c#/AzureSnapshotApp/AzureSnapshotApp.csproj",
+        "projectName": "AzureSnapshotApp",
+        "projectPath": "/Users/gabriel.barella/Library/CloudStorage/OneDrive-VeeamSoftwareCorporation/Documents/Scripts/scripts/Azure_create_snap_c#/AzureSnapshotApp/AzureSnapshotApp.csproj",
+        "packagesPath": "/Users/gabriel.barella/.nuget/packages/",
+        "outputPath": "/Users/gabriel.barella/Library/CloudStorage/OneDrive-VeeamSoftwareCorporation/Documents/Scripts/scripts/Azure_create_snap_c#/AzureSnapshotApp/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/gabriel.barella/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Azure.Core": {
+              "target": "Package",
+              "version": "[1.46.1, )"
+            },
+            "Azure.Identity": {
+              "target": "Package",
+              "version": "[1.14.0, )"
+            },
+            "Azure.ResourceManager": {
+              "target": "Package",
+              "version": "[1.13.0, )"
+            },
+            "Azure.ResourceManager.Compute": {
+              "target": "Package",
+              "version": "[1.5.0, )"
+            },
+            "Azure.ResourceManager.Resources": {
+              "target": "Package",
+              "version": "[1.3.0, )"
+            },
+            "Microsoft.Extensions.Logging": {
+              "target": "Package",
+              "version": "[9.0.5, )"
+            },
+            "Microsoft.Extensions.Logging.Console": {
+              "target": "Package",
+              "version": "[9.0.5, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.NETCore.App.Host.linux-x64",
+              "version": "[8.0.0, 8.0.0]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.100/PortableRuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "linux-x64": {
+          "#import": []
+        }
+      }
+    }
+  }
+}
