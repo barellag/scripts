@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AzureSnapshotApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2a77d453f2e7c63fbac63c9d501c84f45e3e745c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ff5cace0393b7009aad6d2e4c315e4d45afc4c5e")]
 [assembly: System.Reflection.AssemblyProductAttribute("AzureSnapshotApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AzureSnapshotApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

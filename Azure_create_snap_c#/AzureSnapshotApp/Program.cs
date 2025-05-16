@@ -8,18 +8,22 @@ using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Compute;
 using Azure.ResourceManager.Compute.Models;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Console; // Ensure this is included
 
 public class Program
 {
     public static async Task Main(string[] args)
     {
-        // Set up logging
+        // Set up logging with console output including timestamps
         using var loggerFactory = LoggerFactory.Create(builder =>
         {
             builder
-                .AddConsole() // Requires Microsoft.Extensions.Logging.Console package
-                .SetMinimumLevel(LogLevel.Information); // Set the minimum log level
+                .AddConsole(options =>
+                {
+                    options.IncludeScopes = true;
+                    // Customize the format string to include timestamps
+                    options.TimestampFormat = "yyyy-MM-dd HH:mm:ss ";
+                })
+                .SetMinimumLevel(LogLevel.Information);
         });
         ILogger logger = loggerFactory.CreateLogger<Program>();
 
@@ -58,13 +62,14 @@ public class Program
 
             logger.LogInformation("Resource Group '{ResourceGroupName}' found, proceeding to snapshot creation.", resourceGroupName);
 
-            // 4. Build the snapshot payload
-            var snapshotData = new SnapshotData(AzureLocation.WestUS)
+            // 4. Build the snapshot payload with Incremental set to true
+            var snapshotData = new SnapshotData(AzureLocation.EastUS2)
             {
                 CreationData = new DiskCreationData(DiskCreateOption.Copy)
                 {
                     SourceResourceId = new ResourceIdentifier(sourceDiskResource)
                 },
+                Incremental = true,
                 Sku = new SnapshotSku
                 {
                     Name = SnapshotStorageAccountType.StandardLrs
